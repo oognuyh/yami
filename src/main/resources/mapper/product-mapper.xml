@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductMapper">
+    <resultMap id="productMap" type="Product">
+        <result column="product_id" property="productId" />
+        <result column="category_id" property="categoryId" />
+        <result column="category_name" property="categoryName" />
+        <result column="name" property="name" />
+        <result column="image_url" property="imageUrl" />
+        <result column="summary" property="summary" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+        <collection property="content" ofType="imageMap" select="ImageMapper.findImages" column="targetId=product_id" />
+    </resultMap>
+
+    <select id="findProducts" resultMap="productMap">
+        SELECT p.*, c.name AS category_name
+        FROM products p
+        JOIN categories c
+        ON p.category_id = c.category_id
+    </select>
+</mapper>
