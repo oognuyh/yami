@@ -21,7 +21,7 @@ public class Order {
   // 주문명
   private String name;
   // 총 가격
-  private Long totalPrice;
+  private int totalPrice;
   // 수령인 이메일
   private String recipientEmail;
   // 수령인 이름

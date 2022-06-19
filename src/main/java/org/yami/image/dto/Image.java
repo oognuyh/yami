@@ -1,6 +1,7 @@
 package org.yami.image.dto;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.apache.ibatis.type.Alias;
 import org.yami.common.annotation.JsonDateFormat;
@@ -11,7 +12,7 @@ import lombok.Data;
 @Alias("Image")
 public class Image {
   // 이미지 고유번호
-  private String imageId;
+  private String imageId = UUID.randomUUID().toString();
   // 대상 고유번호
   private String targetId;
   // 경로

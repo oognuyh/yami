@@ -21,7 +21,7 @@ public class OrderItem {
   // 상품 고유번호
   private String productId;
   // 수량
-  private Long quantity;
+  private int quantity;
   // 생성일자
   @JsonDateFormat
   private LocalDateTime createdAt;

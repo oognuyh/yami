@@ -1,6 +1,7 @@
 package org.yami.product.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +21,7 @@ public class Product {
   // 이름
   private String name;
   // 가격
-  private Long price;
+  private int price;
   // 요약 설명
   private String summary;
   // 이미지 주소
@@ -34,5 +35,5 @@ public class Product {
   // 카테고리 이름
   private String categoryName;
   // 이미지 설명 목록
-  private List<Image> content;
+  private List<Image> content = new ArrayList<>();
 }

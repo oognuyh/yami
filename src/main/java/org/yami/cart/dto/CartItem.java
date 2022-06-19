@@ -1,6 +1,7 @@
 package org.yami.cart.dto;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.apache.ibatis.type.Alias;
 import org.yami.common.annotation.JsonDateFormat;
@@ -11,7 +12,7 @@ import lombok.Data;
 @Alias("CartItem")
 public class CartItem {
   // 장바구니 항목 고유번호
-  private String cartItemId;
+  private String cartItemId = UUID.randomUUID().toString();
   // 회원 고유번호
   private String memberId;
   // 상품 고유번호
