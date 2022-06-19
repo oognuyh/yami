@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.yami.member.dao.MemberDao">
-    <select id="findRestaurantByRestaurantId" parameterType="String" resultType="Restaurant">
-        SELECT *
-        FROM restaurant
-        WHERE restaurant_id = #{restaurantId}
-    </select>
-</mapper>
