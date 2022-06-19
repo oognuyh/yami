@@ -29,7 +29,6 @@ public class Main {
               tomcat.addWebapp(CONTEXT_PATH, new File(webappDirLocation).getAbsolutePath());
       File additionWebInfClasses = new File("target/classes");
       WebResourceRoot resources = new StandardRoot(context);
-  
       ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
       
       context.setParentClassLoader(classLoader);
@@ -38,7 +37,7 @@ public class Main {
           new DirResourceSet(
               resources, "/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(), "/"));
       context.setResources(resources);
-      //context.setReloadable(true);
+  
       ((StandardJarScanner) context.getJarScanner()).setScanManifest(false);
   
       tomcat.setPort(Integer.valueOf(webPort));
