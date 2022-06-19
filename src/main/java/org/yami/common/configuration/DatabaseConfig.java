@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 @EnableTransactionManagement
-@MapperScan(basePackages = "org.yami.*.dao")
+@MapperScan(basePackages = "org.yami.*.dao", annotationClass = Mapper.class)
 public class DatabaseConfig {
 
   private final DataSource dataSource;
@@ -41,7 +42,7 @@ public class DatabaseConfig {
     properties.setProperty("mapUnderscoreToCamelCase", "true");
 
     sqlSessionFactoryBean.setConfigurationProperties(properties);
-    sqlSessionFactoryBean.setTypeAliasesPackage("org.yami.*.model");
+    sqlSessionFactoryBean.setTypeAliasesPackage("org.yami.*.dto");
     sqlSessionFactoryBean.setDataSource(dataSource);
 
     return sqlSessionFactoryBean.getObject();
