@@ -12,7 +12,6 @@ import org.yami.image.dto.Image;
 import lombok.Data;
 
 @Data
-@Alias("Product")
 public class Product {
   // 상품 고유번호
   private String productId = UUID.randomUUID().toString();

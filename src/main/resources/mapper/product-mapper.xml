@@ -13,6 +13,12 @@
         <collection property="content" ofType="imageMap" select="ImageMapper.findImages" column="targetId=product_id" />
     </resultMap>
 
+	<select id="getList">
+		SELECT product_id, category_id, name, price, updated_at
+		FROM products
+		ORDER BY update_at ASC
+	</select>
+
     <select id="findProducts" resultMap="productMap">
         SELECT p.*, c.name AS category_name
         FROM products p

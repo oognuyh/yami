@@ -9,6 +9,8 @@
     <h2>Hello! ${time}</h2>
     <div>${requestScope.products}</div>
     <div>
+    	<a href="${pageContext.request.contextPath}/product/list.do">목록가기</a>
+    
       <h2>${requestScope.products[0].name}</h2>
       <h4>${requestScope.products[0].categoryName}</h4>
       <h4>${requestScope.products[0].price}</h4>
