@@ -29,22 +29,19 @@
 	                 <li class="nav-item">
 	                      <a class="nav-link"href="#">일식</a>
 	                 </li>
+	                 
 	                              	
                	</ul>
-        		<div>
-        			<form action="#" method="get">
-	         			<label for="foodCategory">음식종류</label>
-	         			<select name="foodCategory" id="foodCategory">
-	         				<option value="" ${foodCategory eq '' ? 'selected' : '' }>전체</option>
-	         				<option value="" ${foodCategory eq '' ? 'selected' : '' }>한식</option>
-	         				<option value="" ${foodCategory eq '' ? 'selected' : '' }>중식</option>
-	         				<option value="" ${foodCategory eq '' ? 'selected' : '' }>일식</option>
-	         				<option value="" ${foodCategory eq '' ? 'selected' : '' }>양식</option>
-	         			</select>
-	         		 	<input type="text" id="keyword" name="keyword" placeholder="검색..." value="${keyword} " />
-	            		<button type="submit">검색</button>
-        			</form>
-        		</div>
+               	<form action="#" method="get">
+        			<div class="mb-3">
+        				<label for="keyword" class="form-label">음식검색</label>      			
+	         			<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색..." value="${keyword} " />	            		        			
+        			</div>
+        			<div class="w-100 clearfix">
+        				<button type="submit">검색</button>
+        			</div>
+        			
+        		</form>
                		
 
                  
@@ -57,8 +54,8 @@
                	</c:when>
                	<c:otherwise>
 	                <div class="w-100 clearfix">
-	                  <a class="btn btn-light btn-sm float-end ms-1" href="#">회원가입</a>
-	                  <a class="btn btn-light btn-sm float-end" href="#">로그인</a>
+	                  <a href="#">장바구니</a>
+	                  <a href="#">로그인아웃</a>
 	                </div>
                	</c:otherwise>
                </c:choose>

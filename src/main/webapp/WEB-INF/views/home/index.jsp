@@ -13,6 +13,10 @@
 	<jsp:include page="../include/navbar.jsp">
 		<jsp:param value="index" name="thisPage"/>
 	</jsp:include>
+	
+	
+	
+	
     <h2>Hello! ${time}</h2>
     <div>${requestScope.products}</div>
     <div>
