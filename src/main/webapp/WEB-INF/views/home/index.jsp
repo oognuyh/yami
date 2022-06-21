@@ -6,23 +6,15 @@
     <title></title>
   </head>
   <body>
-    <h2>Hello! ${time}</h2>
-    <div>${requestScope.products}</div>
+    <h2>Hello!</h2>
     <div>
-    	<a href="${pageContext.request.contextPath}/product/list.do">목록가기</a>
-    
-      <h2>${requestScope.products[0].name}</h2>
-      <h4>${requestScope.products[0].categoryName}</h4>
-      <h4>${requestScope.products[0].price}</h4>
-      <h4>${requestScope.products[0].summary}</h4>
-      <img src="${requestScope.products[0].imageUrl}" />
-      <img src="${requestScope.products[0].content[0].path}" />
-      <img src="${requestScope.products[0].content[1].path}" />
-      <img src="${requestScope.products[0].content[2].path}" />
-      <img src="${requestScope.products[0].content[3].path}" />
-      <img src="${requestScope.products[0].content[4].path}" />
-      <img src="${requestScope.products[0].content[5].path}" />
-      <img src="${requestScope.products[0].content[6].path}" />
+    	<a href="${pageContext.request.contextPath}/product/list">목록가기</a>
+    	<a href="${pageContext.request.contextPath}/product/list?categoryId=26275020-ea3c-11ec-8fea-0242ac120002">국/찌개/탕</a>
+    	<p id="categoryId"><a href="${pageContext.request.contextPath}/product/list?categoryId=d1ee2312-ee05-11ec-8ea0-0242ac120002">찜/전골</a></p>
+    	<!-- 
+    			jsp 넘어가면 카테고리 아이디 필요없이 프로덕트아이디로 디테일넘어가는거임
+    			카테고리별로 다른페이지 !~!
+    	-->
     </div>
     <script type="module"></script>
   </body>

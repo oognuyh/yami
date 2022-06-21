@@ -14,8 +14,8 @@ public class ProductDaoImpl implements ProductDao {
     private SqlSession Sqlsession;
 
 	@Override
-	public List<Product> getList() {
-		return Sqlsession.selectList("ProductMapper.getList");
+	public List<Product> getList(String categoryId) {
+		return Sqlsession.selectList("ProductMapper.getList", categoryId);
 	}
 
 	@Override
@@ -26,6 +26,12 @@ public class ProductDaoImpl implements ProductDao {
 
 	@Override
 	public List<Product> CategoryProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Product> getList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

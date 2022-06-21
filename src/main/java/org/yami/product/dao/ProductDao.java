@@ -13,4 +13,6 @@ public interface ProductDao {
     
     // 카테고리별 
     public List<Product> CategoryProduct();
+
+	List<Product> getList(String categoryId);
 }
