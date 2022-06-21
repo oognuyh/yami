@@ -14,7 +14,7 @@ public class CartItem {
   // 장바구니 항목 고유번호
   private String cartItemId = UUID.randomUUID().toString();
   // 회원 고유번호
-  private String memberId;
+  private String userId;
   // 상품 고유번호
   private String productId;
   // 수량
@@ -25,4 +25,9 @@ public class CartItem {
   // 수정일자
   @JsonDateFormat
   private LocalDateTime updatedAt;
+  // products
+  
+  private String name;
+  
+  private int price;
 }
