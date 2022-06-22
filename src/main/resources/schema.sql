@@ -30,7 +30,7 @@ CREATE TABLE images
 
 CREATE TABLE users
 (
-  user_id  VARCHAR2(40)       NOT NULL,
+  user_id    VARCHAR2(40)       NOT NULL,
   name       VARCHAR2(20 CHAR)  NOT NULL,
   nickname   VARCHAR2(20 CHAR)  NOT NULL,
   email      VARCHAR2(200)      NOT NULL,
@@ -39,6 +39,7 @@ CREATE TABLE users
   address1   VARCHAR2(200 CHAR),
   address2   VARCHAR2(200 CHAR),
   role       VARCHAR2(10)       DEFAULT 'ROLE_USER' NOT NULL,
+  login_type VARCHAR2(10)       NOT NULL,
   created_at DATE               DEFAULT SYSDATE,
   updated_at DATE               DEFAULT SYSDATE,
   CONSTRAINT PK_users PRIMARY KEY (user_id)
