@@ -16,7 +16,7 @@ public class CheckoutDaoImpl implements CheckoutDao {
 
 	@Override
 	public List<OrderItem> getOrderItems(String userId) {
-		List<OrderItem> orderList = session.selectList("ProductMapper.OrderItems", userId);
+		List<OrderItem> orderList = session.selectList("OrderMapper.findOrderItems", userId);
 		return orderList;
 	}
 

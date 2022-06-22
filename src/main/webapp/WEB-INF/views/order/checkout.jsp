@@ -76,40 +76,22 @@
 	    <div class="col-md-5 col-lg-4 order-md-last">
 	      <h4 class="d-flex justify-content-between align-items-center mb-3">
 	        <span class="text-primary">Your cart</span>
-	        <span class="badge bg-primary rounded-pill">3</span>
+	        <span class="badge bg-primary rounded-pill">${order.orderItems.size()}</span>
 	      </h4>
 	      <ul class="list-group mb-3">
-	        <li class="list-group-item d-flex justify-content-between lh-sm">
-	          <div>
-	            <h6 class="my-0">Product name</h6>
-	            <small class="text-muted">Brief description</small>
-	          </div>
-	          <span class="text-muted">$12</span>
-	        </li>
-	        <li class="list-group-item d-flex justify-content-between lh-sm">
-	          <div>
-	            <h6 class="my-0">Second product</h6>
-	            <small class="text-muted">Brief description</small>
-	          </div>
-	          <span class="text-muted">$8</span>
-	        </li>
-	        <li class="list-group-item d-flex justify-content-between lh-sm">
-	          <div>
-	            <h6 class="my-0">Third item</h6>
-	            <small class="text-muted">Brief description</small>
-	          </div>
-	          <span class="text-muted">$5</span>
-	        </li>
-	        <li class="list-group-item d-flex justify-content-between bg-light">
-	          <div class="text-success">
-	            <h6 class="my-0">Promo code</h6>
-	            <small>EXAMPLECODE</small>
-	          </div>
-	          <span class="text-success">−$5</span>
-	        </li>
+			<c:forEach var="orderItem" items="${order.orderItems}" varStatus="status">
+	          <li class="list-group-item d-flex justify-content-between lh-sm">
+	            <div>
+	              <h6 class="my-0">${orderItem.productName}</h6>
+	              <small class="text-muted">Brief description</small>
+	            </div>
+	            <span class="text-muted">&#8361; ${orderItem.quantity * orderItem.productPrice}</span>
+	          </li>
+			</c:forEach>
+
 	        <li class="list-group-item d-flex justify-content-between">
-	          <span>Total (USD)</span>
-	          <strong>$20</strong>
+	          <span>Total (KRW)</span>
+	          <strong>&#8361; ${order.totalPrice}</strong>
 	        </li>
 	      </ul>
 
@@ -122,16 +104,6 @@
 	          <div class="col-12">
 	            <label for="userName" class="form-label">주문하시는 분</label>
 	            <input type="text" class="form-control" id="userName" name="userName" value="${order.payment.buyerName}" required>
-	            <div class="invalid-feedback">
-	              Valid first name is required.
-	            </div>
-	          </div>
-	        </div>
-	          
-	        <div class="row g-3">
-	          <div class="col-12">
-	            <label for="phoneNum" class="form-label">전화번호</label>
-	            <input type="text" class="form-control" id="phoneNum" name="phoneNum" value="${order.payment.buyerTel}" required>
 	            <div class="invalid-feedback">
 	              Valid first name is required.
 	            </div>
@@ -152,17 +124,6 @@
 			 <div class="col-12">
 			   <label for="email" class="form-label">이메일</label>
 			   <input type="text" class="form-control" id="email" name="email" value="${order.payment.buyerEmail}" required>
-			   <span>@</span>
-			   <select name="email" id="email">
-					<option value="">직접입력</option>
-					<option value="@naver.com">naver.com</option>
-					<option value="@hanmail.net">hanmail.net</option>
-					<option value="@gmail.com">gmail.com</option>
-					<option value="@yahoo.com">yahoo.com</option>
-					<option value="@hotmail.com">hotmail.com</option>
-					<option value="@korea.com">korea.com</option>
-					<option value="@nate.com">nate.com</option>
-				</select>
 			   <div class="invalid-feedback">
 			     Valid first name is required.
 			   </div>
@@ -182,7 +143,7 @@
 	          </div>
 	
 	          <div class="col-12">
-	            <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+	            <label for="email" class="form-label">Email</label>
 	            <input type="email" class="form-control" id="email">
 	            <span class="input-group-text">@</span>
 	            <div class="invalid-feedback">
@@ -191,7 +152,7 @@
 	          </div>
 	
 	          <div class="col-12">
-	            <label for="address" class="form-label">Address</label>
+	            <label for="address" class="form-label">Address 1 </label>
 	            <input type="text" class="form-control" id="address" value="${order.payment.buyerAddress1}" placeholder="1234 Main St" required>
 	            <div class="invalid-feedback">
 	              Please enter your shipping address.
@@ -278,12 +239,6 @@
 	    </div>
 	  </div>
 	</main>
-	
-	
-	
-	
-	
-	
 	
 		<form action="" method="post">
 			<h2 class="mb-3">주문서 작성 / 결제</h2>
