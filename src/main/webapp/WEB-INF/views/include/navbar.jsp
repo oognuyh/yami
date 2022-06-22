@@ -4,62 +4,60 @@
 	String thisPage=request.getParameter("thispage");
 %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<nav class="navbar navbar-dark navbar-expand-md text-bg-success">
-      <div class="container">
+	<nav class="navbar navbar-dark navbar-expand-md text-bg-primary">
+      <div class="container-fluid">
          <a class="navbar-brand " href="#">home </a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
              data-bs-target="#navbarNav"><!-- # id="navbarNav"를 가르키는건 -->
                <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-               	<ul class="navbar-nav flex-glow-1">
-               		
-	                 <li class="nav-item">
-	                      <a class="nav-link"href="#">한식</a>
-	                 </li>
-	      
-	                 <li class="nav-item">
-	                      <a class="nav-link"href="#">양식</a>
-	                 </li>
-	                 
-	                 <li class="nav-item">
-	                      <a class="nav-link"href="#">중식</a>
-	                 </li>
-	                 
-	                 <li class="nav-item">
-	                      <a class="nav-link"href="#">일식</a>
-	                 </li>
-	                 
-	                              	
-               	</ul>
-               	<form action="#" method="get">
-        			<div class="mb-3">
-        				<label for="keyword" class="form-label">음식검색</label>      			
-	         			<input type="text" class="form-control" id="keyword" name="keyword" placeholder="검색..." value="${keyword} " />	            		        			
-        			</div>
-        			<div class="w-100 clearfix">
-        				<button type="submit">검색</button>
-        			</div>
-        			
-        		</form>
-               		
-
-                 
+               	<ul id="categories" class="navbar-nav flex-glow-1"></ul>
+               	
+               	<div class="w-50 clearfix ">
+		         	<form action="#" method="get">
+					 	<input type="text" class="form-control" id="keyword" name="keyword" value="${keyword }" placeholder="음식명을 검색해보세요!" aria-label="Recipient's username" aria-describedby="button-addon2">
+					 	<button class="btn btn-secondary" type="button" id="button-addon2">검색</button>					 	
+		        	</form>      			
+               	
+               	</div>
+              		              
                <c:choose>
-               	<c:when test="${empty id }">
-	                <div class="w-100 clearfix">
-	                  <a class="btn btn-light btn-sm float-end ms-1" href="#">회원가입</a>
-	                  <a class="btn btn-light btn-sm float-end" href="#">로그인</a>
-	                </div>
-               	</c:when>
-               	<c:otherwise>
-	                <div class="w-100 clearfix">
-	                  <a href="#">장바구니</a>
-	                  <a href="#">로그인아웃</a>
-	                </div>
-               	</c:otherwise>
+	               	<c:when test="${empty requestScope.id }">
+		                <div class="w-50 clearfix">
+		                  	<a class="btn btn-light btn-sm float-end ms-1" href="#">회원가입</a>
+		                  	<a class="btn btn-light btn-sm float-end" href="#">로그인</a>
+		                </div>
+	               	</c:when>
+	               	<c:otherwise>
+		                <div class="w-50 clearfix">
+		                	<a href="#">${requestScope.id }</a>
+		                  	<a href="#">장바구니</a>
+		                 	<a href="#">로그인아웃</a>
+		                </div>
+	               	</c:otherwise>
                </c:choose>
-
+							
           </div>
       </div>
    </nav>
+   
+   <script>
+   	(function(){
+   		fetch("${pageContext.request.contextPath}/api/categories")
+   		.then(function(response){
+   			return response.json();
+   		})
+   		.then((categories) => {
+   	      document.getElementById('categories').innerHTML = categories
+   	        .map(({ categoryId, name }) => {
+   	          const link = `${pageContext.request.contextPath}/product/list?categoryId=\${categoryId}`;
+
+   	          return `
+   	            <li class="nav-item"><a class="nav-link \${window.location.href.includes(link) ? ' active' : ''}" href="\${link}">\${name}</a></li>
+   	          `;
+   	        })
+   	        .join(' ');
+   	    });
+   	})();
+   </script>

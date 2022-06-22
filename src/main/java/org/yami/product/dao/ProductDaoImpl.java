@@ -18,4 +18,10 @@ public class ProductDaoImpl implements ProductDao {
     public List<Product> findProducts() {
         return sqlSession.selectList("ProductMapper.findProducts");
     }
+
+	@Override
+	public Product findProduct(String productId) {
+
+		return sqlSession.selectOne("ProductMapper.findProduct",productId);
+	}
 }

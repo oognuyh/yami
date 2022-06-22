@@ -1,23 +1,9 @@
-INSERT INTO categories(category_id, name) VALUES('26275020-ea3c-11ec-8fea-0242ac120002', '튀김');
-INSERT INTO categories(category_id, name) VALUES('d1ee2312-ee05-11ec-8ea0-0242ac120002', '국물요리');
-INSERT INTO categories(category_id, name) VALUES('51d25c06-ee06-11ec-8ea0-0242ac120002', '떡볶이/분식');
-INSERT INTO categories(category_id, name) VALUES('572c44eb-6505-4377-8c14-dd90204ffea6', '간편식사/밀키트/반찬');
-INSERT INTO categories(category_id, name) VALUES('ae355eb5-bd08-43c2-b05f-f77974cd5aa5', '피자/햄버거');
-INSERT INTO categories(category_id, name) VALUES('8afc30bf-10c6-4490-b7d5-7b72787054c9', '베이커리');
-INSERT INTO categories(category_id, name) VALUES('bc7715a4-f4e7-4674-978f-790cfcb11f9c', '간식/과자');
-INSERT INTO categories(category_id, name) VALUES('3f017cff-45a9-4820-9769-7784168dcb92', '육가공');
-INSERT INTO categories(category_id, name) VALUES('411414b9-5ef6-4e11-ad76-af795a98a064', '정육');
-INSERT INTO categories(category_id, name) VALUES('d62670d6-6fb3-4286-aee6-357b95a09a37', '수산물/건어물');
-INSERT INTO categories(category_id, name) VALUES('3f006a84-cb34-4669-a98a-6d0eeeb2a93e', '소스/드레싱/장류');
-INSERT INTO categories(category_id, name) VALUES('15651ae7-5995-4217-9298-07271104d383', '가루/조미료/오일');
-INSERT INTO categories(category_id, name) VALUES('6cb3df2b-c354-4308-a5ac-057edd74656c', '농산물가공');
-INSERT INTO categories(category_id, name) VALUES('71e27f98-39c5-4d83-b09c-cae91961afc6', '커피/음료재료');
-INSERT INTO categories(category_id, name) VALUES('490830d9-1433-49c9-a613-f6e6f7c678cc', '차/음료/생수');
-INSERT INTO categories(category_id, name) VALUES('c3e1fa2e-2f64-4cdb-ab50-4b1782f859b9', '유제품/치즈');
-INSERT INTO categories(category_id, name) VALUES('89d01dc9-8302-46bd-8d76-7fec9fa5fc79', '다이어트/건강/키즈식품');
-INSERT INTO categories(category_id, name) VALUES('4078c25e-8cbb-436f-8cbf-6946b83ea003', '배달/매장용품');
-INSERT INTO categories(category_id, name) VALUES('ffc63427-d643-4185-96cb-20d9aa8bb27d', '생활/주방용품');
-INSERT INTO categories(category_id, name) VALUES('cd30d460-2e1e-4638-8d96-d9f2cd713b7b', '선물세트');
+INSERT INTO categories(category_id, name) VALUES('26275020-ea3c-11ec-8fea-0242ac120002', '국/찌개/탕');
+INSERT INTO categories(category_id, name) VALUES('d1ee2312-ee05-11ec-8ea0-0242ac120002', '찜/전골');
+INSERT INTO categories(category_id, name) VALUES('51d25c06-ee06-11ec-8ea0-0242ac120002', '파스타/면요리');
+INSERT INTO categories(category_id, name) VALUES('572c44eb-6505-4377-8c14-dd90204ffea6', '기타 간편요리');
+
+
 
 INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, address2) 
 VALUES('d1ee2312-ee05-11ec-8ea0-0242ac120002', 'tester01', 'tester01', 'tester01@yami.org', '$2a$10$awhFJwrWH4O3keLdqCecT.hplUuJSTlK6mGNY/86FWTh5EX3jwjou', '06234','서울특별시 강남구 테헤란로 124', '삼원타워 5층');
@@ -25,7 +11,10 @@ INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, 
 VALUES('5a6a5894-0c46-48a5-99ac-ce72453c518f', 'tester02', 'tester02', 'tester02@yami.org', '$2a$10$k7xbQDf4e48HPp5spbqPuetQkAQmCPPnee98aOJZGrlT0hCa6VDgy', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층');
 
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('29a9c685-64bd-48db-a6cd-fafa2d4aed3c', '26275020-ea3c-11ec-8fea-0242ac120002', '크리스피 통새우 후라이드 200g_에어프라이어 전용 새우튀김!', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('29a9c685-64bd-48db-a6cd-fafa2d4aed3c', '572c44eb-6505-4377-8c14-dd90204ffea6', '크리스피 통새우 후라이드 200g_에어프라이어 전용 새우튀김!', 4900, '졸맛', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+INSERT INTO products(product_id, category_id, name, price, summary, image_url)
+VALUES('66b1a598-9de2-43d9-808a-bb6176fee8e7', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '우삼겹 김치찌개 185g_소고기김치찌개', 4500, '졸맛임', 'https://www.foodingfactory.com/data/goods/22/04/15/1000009545/1000009545_main_084.jpg');
+
 
 INSERT INTO images(image_id, target_id, path) VALUES('4aef2ca1-150a-4d2f-ac06-752267e96f33', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_01.jpg');
 INSERT INTO images(image_id, target_id, path) VALUES('219a8fc6-7ddf-4c91-b8f8-b6c7acfe2431', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_02.jpg');

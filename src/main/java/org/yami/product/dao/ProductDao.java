@@ -7,4 +7,5 @@ import org.yami.product.dto.Product;
 public interface ProductDao {
  
     List<Product> findProducts();
+    public Product findProduct(String productId);
 }
