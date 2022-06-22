@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="OrderMapper">
+<mapper namespace="OrderMapper">	
+	<resultMap id="orderItemMap" type="OrderItem">
+		<result column="order_item_id" property="orderItemId" />
+		<result column="user_id" property="userId" />
+		<result column="order_id" property="orderId" />
+		<result column="product_id" property="productId" />
+		<result column="quantity" property="quantity" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="created_at" property="createdAt" />		
+		<result column="name" property="productName" />
+		<result column="price" property="productPrice" />
+		<result column="image_url" property="productImageUrl" />		
+	</resultMap>
+
+    <select id="findOrderItems"  parameterType="string" resultMap="orderItemMap">
+    	SELECT oi.*, p.* 
+    	FROM orderitems oi
+    	JOIN products p
+    	ON oi.product_id = p.product_id
+    	WHERE user_id = #{userId}
+    </select>    
 	
-	<select id="getOrderItems">
-		SELECT * FROM orderitems
+	<select id="findBuyerByUserId" resultType="Payment">
+		SELECT email AS buyerEmail, name AS buyerName, postcode AS buyerPostcode, address1 AS buyerAddress1, address2 AS buyerAddress2
+		FROM users
+		WHERE user_id = #{userId}
 	</select>
-	
 </mapper>

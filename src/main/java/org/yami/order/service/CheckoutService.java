@@ -1,7 +1,6 @@
 package org.yami.order.service;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.yami.order.dto.Order;
 
 public interface CheckoutService {
 

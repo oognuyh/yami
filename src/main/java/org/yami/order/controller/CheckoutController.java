@@ -23,9 +23,6 @@ public class CheckoutController {
 	
 	@RequestMapping("/order/checkout")
 	public ModelAndView checkout(ModelAndView mView) {
-		
-		//OrderItem dto = session.메서드명(id);
-		
 		service.createOrder(mView);
 		mView.setViewName("order/checkout");
 		

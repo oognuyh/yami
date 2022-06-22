@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.apache.ibatis.type.Alias;
 import org.yami.common.annotation.JsonDateFormat;
-import org.yami.product.dto.Product;
 
 import lombok.Data;
 
