@@ -16,6 +16,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.github.pagehelper.PageInterceptor;
+
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -34,14 +36,25 @@ public class DatabaseConfig {
   @Bean
   public SqlSessionFactory sqlSessionFactory() throws Exception {
     SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-    Properties properties = new Properties();
+    PageInterceptor pageInterceptor = new PageInterceptor();
+    Properties configurationProps = new Properties();
+    Properties pageHelperProps = new Properties();
 
-    sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver()
-        .getResources("classpath:mapper/*.xml"));
+    sqlSessionFactoryBean.setMapperLocations(
+        new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+    sqlSessionFactoryBean.setPlugins();
+  
+    configurationProps.setProperty("mapUnderscoreToCamelCase", "true");
+    configurationProps.setProperty("jdbcTypeForNull", "NULL");
+    configurationProps.setProperty("callSettersOnNulls", "false");
 
-    properties.setProperty("mapUnderscoreToCamelCase", "true");
+    pageHelperProps.setProperty("helperDialect", "oracle9i");
+    pageHelperProps.setProperty("reasonable", "true");
 
-    sqlSessionFactoryBean.setConfigurationProperties(properties);
+    pageInterceptor.setProperties(pageHelperProps);
+
+    sqlSessionFactoryBean.setPlugins(pageInterceptor);
+    sqlSessionFactoryBean.setConfigurationProperties(configurationProps);
     sqlSessionFactoryBean.setTypeAliasesPackage("org.yami.*.dto");
     sqlSessionFactoryBean.setDataSource(dataSource);
 
