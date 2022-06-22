@@ -17,7 +17,7 @@ public class Order {
   // 주문 고유번호
   private String orderId = UUID.randomUUID().toString();
   // 회원 고유번호
-  private String memberId;
+  private String userId;
   // 주문명
   private String name;
   // 총 가격

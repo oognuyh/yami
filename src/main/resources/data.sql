@@ -34,3 +34,16 @@ INSERT INTO images(image_id, target_id, path) VALUES('cf3c3699-b9d7-43f8-b35e-76
 INSERT INTO images(image_id, target_id, path) VALUES('66b7a08f-2af8-42b8-b56b-84eaea38da31', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_05.jpg');
 INSERT INTO images(image_id, target_id, path) VALUES('e8b16b07-e763-4ee1-9c10-89271ec0625d', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_06.jpg');
 INSERT INTO images(image_id, target_id, path) VALUES('4d156058-64f0-4941-847a-cd427cdb4240', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_07.jpg');
+
+
+INSERT INTO orderitems
+(order_item_id, user_id, order_id, product_id, quantity, created_at, updated_at)
+VALUES('13213506-7f60-41db-86ca-c3b2005d3489', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '41c60ad4-0042-406b-915e-7f2668751990', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 2, SYSDATE, SYSDATE);
+
+INSERT INTO orderitems
+(order_item_id, user_id, order_id, product_id, quantity, created_at, updated_at)
+VALUES('9471b9a0-28f6-456e-9ad2-771181965777', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '41c60ad4-0042-406b-915e-7f2668751990', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 3, SYSDATE, SYSDATE);
+
+INSERT INTO orderitems
+(order_item_id, user_id, order_id, product_id, quantity, created_at, updated_at)
+VALUES('20ed09eb-6a3d-4203-a2b9-07fbe32fb924', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '41c60ad4-0042-406b-915e-7f2668751990', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 4, SYSDATE, SYSDATE);

@@ -15,7 +15,7 @@ public class OrderItem {
   // 주문 항목 고유번호
   private String orderItemId = UUID.randomUUID().toString();
   // 회원 고유번호
-  private String memberId;
+  private String userId;
   // 주문 고유번호
   private String orderId;
   // 상품 고유번호
@@ -28,6 +28,10 @@ public class OrderItem {
   // 수정일자
   @JsonDateFormat
   private LocalDateTime updatedAt;
-  // 관련 상품
-  Product product;
+  // 상품 이름
+  private String productName;
+  //상품 이미지 주소
+  private String productImageUrl;
+  // 상품 가격
+  private int productPrice;
 }

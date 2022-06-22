@@ -19,4 +19,23 @@
         JOIN categories c
         ON p.category_id = c.category_id
     </select>
+    
+    <select id="OrderItems" resultType="OrderItem">
+    	SELECT oi.*, p.name AS product_name, p.price AS product_price, p.image_url AS product_image_url 
+    	FROM orderitems oi
+    	JOIN products p
+    	ON oi.product_id=p.product_id
+    	WHERE user_id = #{userId}
+    </select>
+    
+    <!-- 주문자 기본정보 출력 -->
+    <select id="getUserData">
+    	SELECT name, email
+    	FROM users
+    	WHERE user_id=#{user_id}
+    </select>
+    
+    
+    
+    
 </mapper>

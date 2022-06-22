@@ -131,11 +131,6 @@ ALTER TABLE cartitems
     REFERENCES users (user_id);
 
 ALTER TABLE orderitems
-  ADD CONSTRAINT FK_orders_TO_orderitems
-    FOREIGN KEY (order_id)
-    REFERENCES orders (order_id);
-
-ALTER TABLE orderitems
   ADD CONSTRAINT FK_products_TO_orderitems
     FOREIGN KEY (product_id)
     REFERENCES products (product_id);
