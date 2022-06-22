@@ -20,7 +20,7 @@
         ON p.category_id = c.category_id
     </select>
     
-    <select id="OrderItems" resultType="OrderItem">
+    <select id="OrderItems"  parameterType="string" resultType="org.yami.order.dto.OrderItem">
     	SELECT oi.*, p.name AS product_name, p.price AS product_price, p.image_url AS product_image_url 
     	FROM orderitems oi
     	JOIN products p

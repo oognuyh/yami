@@ -3,6 +3,8 @@ package org.yami.order.controller;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,9 @@ public class CheckoutController {
 	
 	@RequestMapping("/order/checkout")
 	public ModelAndView checkout(ModelAndView mView) {
+		
+		//OrderItem dto = session.메서드명(id);
+		
 		service.createOrder(mView);
 		mView.setViewName("order/checkout");
 		

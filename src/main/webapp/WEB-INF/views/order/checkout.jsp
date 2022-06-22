@@ -122,13 +122,56 @@
 	      <form class="needs-validation" novalidate>
 	        <div class="row g-3">
 	          <div class="col-12">
-	            <label for="firstName" class="form-label">주문하시는 분</label>
-	            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+	            <label for="userName" class="form-label">주문하시는 분</label>
+	            <input type="text" class="form-control" id="userName" name="userName" value="" required>
 	            <div class="invalid-feedback">
 	              Valid first name is required.
 	            </div>
 	          </div>
+	        </div>
+	          
+	        <div class="row g-3">
+	          <div class="col-12">
+	            <label for="phoneNum" class="form-label">전화번호</label>
+	            <input type="text" class="form-control" id="phoneNum" name="phoneNum" value="" required>
+	            <div class="invalid-feedback">
+	              Valid first name is required.
+	            </div>
+	          </div>
+	        </div>
+	        
+	        <div class="row g-3">
+			 <div class="col-12">
+			   <label for="cellPhone" class="form-label">휴대폰 번호</label>
+			   <input type="text" class="form-control" id="cellPhone" name="cellPhone" value="" required>
+			   <div class="invalid-feedback">
+			     Valid first name is required.
+			   </div>
+			 </div>
+	        </div>
+	        
+	        <div class="row g-3">
+			 <div class="col-12">
+			   <label for="email" class="form-label">이메일</label>
+			   <input type="text" class="form-control" id="email" name="email" value="" required>
+			   <span>@</span>
+			   <select name="email" id="email">
+					<option value="">직접입력</option>
+					<option value="@naver.com">naver.com</option>
+					<option value="@hanmail.net">hanmail.net</option>
+					<option value="@gmail.com">gmail.com</option>
+					<option value="@yahoo.com">yahoo.com</option>
+					<option value="@hotmail.com">hotmail.com</option>
+					<option value="@korea.com">korea.com</option>
+					<option value="@nate.com">nate.com</option>
+				</select>
+			   <div class="invalid-feedback">
+			     Valid first name is required.
+			   </div>
+			 </div>
+	        </div>
 	
+				
 	          <div class="col-12">
 	            <label for="username" class="form-label">Username</label>
 	            <div class="input-group has-validation">
@@ -142,7 +185,8 @@
 	
 	          <div class="col-12">
 	            <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-	            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+	            <input type="email" class="form-control" id="email">
+	            <span class="input-group-text">@</span>
 	            <div class="invalid-feedback">
 	              Please enter a valid email address for shipping updates.
 	            </div>
@@ -238,20 +282,25 @@
 	</main>
 	
 	
+	
+	
+	
+	
+	
 		<form action="" method="post">
 			<h2 class="mb-3">주문서 작성 / 결제</h2>
 			<!-- 주문상세내역 -->
 			<div class="col-md-7 col-lg-8">
 				<h3 class="mb-3">주문상세내역</h3>
-				<table>
+				<table class="table">
 					<thead>
 						<tr>
-							<th>상품/옵션 정보</th>
-							<th>수량</th>
-							<th>상품 금액</th>
-							<!-- <th>할인/적립</th> -->
-							<th>합계 금액</th>
-							<th>배송비</th>
+							<th scope="col">상품/옵션 정보</th>
+							<th scope="col">수량</th>
+							<th scope="col">상품 금액</th>
+							<!-- <th scope="col">할인/적립</th> -->
+							<th scope="col">합계 금액</th>
+							<th scope="col">배송비</th>
 						</tr>
 					</thead>
 
@@ -262,7 +311,7 @@
 								<td>${tmp.quantity }개</td>
 								<td>${tmp.productPrice }원</td>
 								<!-- <td></td> -->
-								<td>${order.TotalPrice }원</td>
+								<td>${order.totalPrice }원</td>
 								<td>무료</td>
 							</tr>
 						</c:forEach>
@@ -316,8 +365,9 @@
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td><input type="text" name="email" id="email" /> <select
+							<td><input type="text" name="email" id="email" /> <span>@</span><select
 								name="email" id="email">
+								
 									<option value="">직접입력</option>
 									<option value="@naver.com">naver.com</option>
 									<option value="@hanmail.net">hanmail.net</option>
