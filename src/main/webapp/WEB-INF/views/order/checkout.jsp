@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>/order/checkout.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.js"></script>
 
     <style>
       .bd-placeholder-img {
@@ -69,7 +68,6 @@
 	
 	  <main>
 	  <div class="py-5 text-center">
-	    <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
 	    <h2>Checkout form</h2>
 	    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
 	  </div>
@@ -123,7 +121,7 @@
 	        <div class="row g-3">
 	          <div class="col-12">
 	            <label for="userName" class="form-label">주문하시는 분</label>
-	            <input type="text" class="form-control" id="userName" name="userName" value="" required>
+	            <input type="text" class="form-control" id="userName" name="userName" value="${order.payment.buyerName}" required>
 	            <div class="invalid-feedback">
 	              Valid first name is required.
 	            </div>
@@ -133,7 +131,7 @@
 	        <div class="row g-3">
 	          <div class="col-12">
 	            <label for="phoneNum" class="form-label">전화번호</label>
-	            <input type="text" class="form-control" id="phoneNum" name="phoneNum" value="" required>
+	            <input type="text" class="form-control" id="phoneNum" name="phoneNum" value="${order.payment.buyerTel}" required>
 	            <div class="invalid-feedback">
 	              Valid first name is required.
 	            </div>
@@ -153,7 +151,7 @@
 	        <div class="row g-3">
 			 <div class="col-12">
 			   <label for="email" class="form-label">이메일</label>
-			   <input type="text" class="form-control" id="email" name="email" value="" required>
+			   <input type="text" class="form-control" id="email" name="email" value="${order.payment.buyerEmail}" required>
 			   <span>@</span>
 			   <select name="email" id="email">
 					<option value="">직접입력</option>
@@ -194,7 +192,7 @@
 	
 	          <div class="col-12">
 	            <label for="address" class="form-label">Address</label>
-	            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+	            <input type="text" class="form-control" id="address" value="${order.payment.buyerAddress1}" placeholder="1234 Main St" required>
 	            <div class="invalid-feedback">
 	              Please enter your shipping address.
 	            </div>
@@ -202,7 +200,7 @@
 	
 	          <div class="col-12">
 	            <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-	            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+	            <input type="text" class="form-control" id="address2" value="${order.payment.buyerAddress2}" placeholder="Apartment or suite">
 	          </div>
 
 	        </div>

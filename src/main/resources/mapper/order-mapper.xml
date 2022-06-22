@@ -6,4 +6,9 @@
 		SELECT * FROM orderitems
 	</select>
 	
+	<select id="findBuyerByUserId" resultType="Payment">
+		SELECT email AS buyerEmail, name AS buyerName, postcode AS buyerPostcode, address1 AS buyerAddress1, address2 AS buyerAddress2
+		FROM users
+		WHERE user_id = #{userId}
+	</select>
 </mapper>

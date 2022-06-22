@@ -1,13 +1,12 @@
 package org.yami.order.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.yami.order.dto.Order;
 import org.yami.order.dto.OrderItem;
+import org.yami.payment.dto.Payment;
 
 @Repository
 public class CheckoutDaoImpl implements CheckoutDao {
@@ -22,15 +21,7 @@ public class CheckoutDaoImpl implements CheckoutDao {
 	}
 
 	@Override
-	public Order getUserData(Order order) {
-		// 세션에 저장된 로그인중인 id값을 얻어와서
-		//String id = (String)session.get
-		// dto에 담기
-		
-		return null;
-	}
-
-
-	
-	
+	public Payment getBuyerByUserId(String userId) {
+		return session.selectOne("OrderMapper.findBuyerByUserId", userId);
+	}	
 }
