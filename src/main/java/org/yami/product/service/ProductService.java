@@ -13,12 +13,17 @@ public class ProductService {
 	@Autowired
     private ProductDao ProductDao;
 
-	public void getList(String categoryId,  ModelAndView mView) {
+	public void getList(String categoryId, ModelAndView mView) {
 
-		//상품 목록
 		List<Product> list=ProductDao.getList(categoryId);
-		//ModelAndView  객체에 list 라는 키값으로 담는다.
 		mView.addObject("list", list);
 	}
+	
+	public void findProducts(String find, ModelAndView mView) {
+		
+		List<Product> list=ProductDao.findProducts(find);
+		mView.addObject("list", list);
+	}
+	
 
 }

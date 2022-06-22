@@ -9,15 +9,15 @@ INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, 
 VALUES('5a6a5894-0c46-48a5-99ac-ce72453c518f', 'tester02', 'tester02', 'tester02@yami.org', '$2a$10$k7xbQDf4e48HPp5spbqPuetQkAQmCPPnee98aOJZGrlT0hCa6VDgy', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층');
 
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('29a9c685-64bd-48db-a6cd-fafa2d4aed3c', '26275020-ea3c-11ec-8fea-0242ac120002', '국/찌개/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('29a9c685-64bd-48db-a6cd-fafa2d4aed3c', '26275020-ea3c-11ec-8fea-0242ac120002', '가/국/찌개/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('7e9c9a3f-c1e9-4c56-9567-b303ae9c95f9', '26275020-ea3c-11ec-8fea-0242ac120002', '국/찌개/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('7e9c9a3f-c1e9-4c56-9567-b303ae9c95f9', '26275020-ea3c-11ec-8fea-0242ac120002', '/국/찌개/나/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('70b8295b-8bd4-45b3-8465-b0918a973312', '26275020-ea3c-11ec-8fea-0242ac120002', '국/찌개/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('70b8295b-8bd4-45b3-8465-b0918a973312', '26275020-ea3c-11ec-8fea-0242ac120002', '가/국/찌개/탕', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('f2438614-4a9f-4132-aa0f-37e6292527ad', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '찜/전골', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('f2438614-4a9f-4132-aa0f-37e6292527ad', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '나/찜/전골', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
 INSERT INTO products(product_id, category_id, name, price, summary, image_url) 
-VALUES('806644e3-1c92-432e-8cde-e07adff38b8a', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '찜/전골', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
+VALUES('806644e3-1c92-432e-8cde-e07adff38b8a', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', '가찜/전골', 4900, '', 'https://www.foodingfactory.com/data/goods/21/02/08/1000007431/1000007431_detail_082.jpg');
 
 
 INSERT INTO images(image_id, target_id, path) VALUES('4aef2ca1-150a-4d2f-ac06-752267e96f33', '29a9c685-64bd-48db-a6cd-fafa2d4aed3c', 'https://img.bizthenaum.com/img2021/fried_shrimp_01.jpg');

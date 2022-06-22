@@ -19,9 +19,8 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<Product> findProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> findProducts(String find) {
+		return Sqlsession.selectList("ProductMapper.findProducts", find);
 	}
 
 	@Override
@@ -30,9 +29,4 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 	}
 
-	@Override
-	public List<Product> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

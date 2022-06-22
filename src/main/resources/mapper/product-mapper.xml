@@ -18,9 +18,15 @@
         JOIN categories c
         ON p.category_id = c.category_id
         WHERE p.category_id= #{categoryId}
+        ORDER BY p.name ASC;
 	</select>
 
-    <select id="findProducts" resultMap="productMap">
-    
-    </select>
+    <select id="findProducts" parameterType="String" resultMap="productMap">
+        SELECT p.*, c.name AS category_name
+        FROM products p
+        JOIN categories c
+        ON p.category_id = c.category_id
+        WHERE p.name like '%'||#{find}||'%'
+        ORDER BY p.name ASC;
+	</select>
 </mapper>

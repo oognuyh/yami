@@ -7,8 +7,9 @@
   </head>
   <body>
     <h2>Hello!</h2>
+    <p>${a }</p>
     <div>
-    	<a href="${pageContext.request.contextPath}/product/list">목록가기</a>
+    	<a href="${pageContext.request.contextPath}/product/list?categoryId=">목록가기</a>
     	<a href="${pageContext.request.contextPath}/product/list?categoryId=26275020-ea3c-11ec-8fea-0242ac120002">국/찌개/탕</a>
     	<p id="categoryId"><a href="${pageContext.request.contextPath}/product/list?categoryId=d1ee2312-ee05-11ec-8ea0-0242ac120002">찜/전골</a></p>
     	<!-- 
