@@ -39,20 +39,19 @@ public class CheckoutServiceImpl implements CheckoutService {
 		
 		// 그걸 mView객체에 담기
 		mView.addObject("order", order);
-		
 	}
 
-	@Override
-	public Order getUserData(Order order, HttpSession session) {
-		
-		// 세션에 저장되어 있는 id값을 불러와서
-		String id = (String)session.getAttribute("id");
-		// 그 값으로 DB에서 가져온 정보를 dto에 담고 출력
-		dao.get
-		order.setUserId(userId);
-		
-		return null;
-	}
+//	@Override
+//	public Order getUserData(Order order, HttpSession session) {
+//		
+//		// 세션에 저장되어 있는 id값을 불러와서
+//		String id = (String)session.getAttribute("id");
+//		// 그 값으로 DB에서 가져온 정보를 dto에 담고 출력
+//		dao.get
+//		order.setUserId(userId);
+//		
+//		return null;
+//	}
 	
 	
 	

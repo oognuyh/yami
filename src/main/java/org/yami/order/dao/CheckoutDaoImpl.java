@@ -17,14 +17,14 @@ public class CheckoutDaoImpl implements CheckoutDao {
 
 	@Override
 	public List<OrderItem> getOrderItems(String userId) {
-		List<OrderItem> orderList = session.selectList("ProductMapper.OrderItems");
+		List<OrderItem> orderList = session.selectList("ProductMapper.OrderItems", userId);
 		return orderList;
 	}
 
 	@Override
 	public Order getUserData(Order order) {
 		// 세션에 저장된 로그인중인 id값을 얻어와서
-		String id = (String)session.get
+		//String id = (String)session.get
 		// dto에 담기
 		
 		return null;
