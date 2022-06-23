@@ -12,6 +12,7 @@
 <body>
 <div class="container">
 <h1>상품 목록</h1>
+	${page.list }
 	<form class="row g-2" action="${pageContext.request.contextPath}/product/list/seach">
 		<div class="col-auto col-5">
 		<input class="form-control mt-3 mb-3" type="text" name="find" placeholder="검색하세요"   />	
