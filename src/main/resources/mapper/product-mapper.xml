@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ProductMapper">
+<!-- property =필드명  -->
     <resultMap id="productMap" type="Product">
         <result column="product_id" property="productId" />
         <result column="category_id" property="categoryId" />
@@ -12,11 +13,32 @@
         <result column="updated_at" property="updatedAt" />
         <collection property="content" ofType="imageMap" select="ImageMapper.findImages" column="targetId=product_id" />
     </resultMap>
+    	<sql id="search">
+    		<choose>
+    			<when test="name !=null">
+    				WHERE p.name LIKE '%'||#{name}||'%'
+    			</when>
+    		</choose>
+    	</sql>
+    
+    
 
-    <select id="findProducts" resultMap="productMap">
-        SELECT p.*, c.name AS category_name
+    <select id="findProducts" resultType="org.yami.product.dto.Product">
+        SELECT p.product_id As productId, p.category_id As categoryId, p.name As name, p.price As price, c.name As categoryName, 
+        p.image_url As imageUrl, p.summary, p.created_at As createdAt, p.updated_at As updatedAt
+        FROM products p      
+        JOIN categories c
+        ON p.category_id = c.category_id
+        <include refid="search"></include> 
+    </select>
+    
+    <select id="findProduct" parameterType="String" resultType="org.yami.product.dto.Product">
+        SELECT p.product_id As productId, p.category_id As categoryId,p.name As name,p.price As price,c.name As categoryName, 
+        p.image_url As imageUrl, p.summary, p.created_at As createdAt, p.updated_at As updatedAt
         FROM products p
         JOIN categories c
         ON p.category_id = c.category_id
+    	WHERE product_id=#{productId}
     </select>
+    
 </mapper>

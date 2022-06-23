@@ -36,4 +36,5 @@ public class Product {
   private String categoryName;
   // 이미지 설명 목록
   private List<Image> content = new ArrayList<>();
+  
 }
