@@ -29,4 +29,9 @@
         WHERE p.name like '%'||#{find}||'%'
         ORDER BY p.name ASC;
 	</select>
+
+    <insert id="saveProduct">
+        INSERT INTO products(product_id, category_id, name, price, summary, image_url)
+        VALUES(#{productId}, #{categoryId}, #{name}, #{price}, #{summary}, #{imageUrl})
+    </insert>
 </mapper>

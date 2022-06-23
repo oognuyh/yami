@@ -11,16 +11,16 @@ import org.yami.product.dto.Product;
 public class ProductDaoImpl implements ProductDao {
 
     @Autowired 
-    private SqlSession Sqlsession;
+    private SqlSession sqlSession;
 
 	@Override
 	public List<Product> getList(String categoryId) {
-		return Sqlsession.selectList("ProductMapper.getList", categoryId);
+		return sqlSession.selectList("ProductMapper.getList", categoryId);
 	}
 
 	@Override
 	public List<Product> findProducts(String find) {
-		return Sqlsession.selectList("ProductMapper.findProducts", find);
+		return sqlSession.selectList("ProductMapper.findProducts", find);
 	}
 
 	@Override
@@ -29,4 +29,8 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 	}
 
+	@Override
+	public int saveProduct(Product product) {
+		return sqlSession.insert("ProductMapper.saveProduct", product);
+	}
 }

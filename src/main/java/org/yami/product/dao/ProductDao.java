@@ -14,4 +14,5 @@ public interface ProductDao {
     // 카테고리별 
     public List<Product> CategoryProduct();
 
+    public int saveProduct(Product product);
 }
