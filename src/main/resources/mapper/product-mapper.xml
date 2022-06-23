@@ -24,7 +24,7 @@
     
 
     <select id="findProducts" resultType="org.yami.product.dto.Product">
-        SELECT p.product_id As productId, p.category_id As categoryId,p.name As name,p.price As price, 
+        SELECT p.product_id As productId, p.category_id As categoryId, p.name As name, p.price As price, c.name As categoryName, 
         p.image_url As imageUrl, p.summary, p.created_at As createdAt, p.updated_at As updatedAt
         FROM products p      
         JOIN categories c

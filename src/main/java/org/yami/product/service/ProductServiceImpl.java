@@ -2,12 +2,16 @@ package org.yami.product.service;
 
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.yami.product.dao.ProductDao;
 import org.yami.product.dto.Product;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +24,10 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public  void findProducts(HttpServletRequest request) {
 		String keyword=request.getParameter("keyword");
+		int pageSize = Integer.valueOf(Optional.ofNullable(request.getParameter("pageSize"))
+				.orElse("10"));
+		int pageNum = Integer.valueOf(Optional.ofNullable(request.getParameter("pageNum"))
+				.orElse("1"));
 		
 		if(keyword==null){ 
 			keyword="";
@@ -32,8 +40,11 @@ public class ProductServiceImpl implements ProductService {
 			product.setName(keyword);
 		}
 		
+		PageInfo<Product> page = PageHelper.startPage(pageNum, pageSize)
+				.doSelectPageInfo(() -> productDao.findProducts(product));
+		
 		request.setAttribute("keyword", keyword);
-		request.setAttribute("products", productDao.findProducts(product));
+		request.setAttribute("page", page);
 	}
 
 	@Override
