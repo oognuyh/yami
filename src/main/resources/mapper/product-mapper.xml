@@ -26,7 +26,7 @@
         JOIN categories c
         ON p.category_id = c.category_id
         WHERE p.category_id= #{categoryId}
-        ORDER BY p.name ASC;
+        ORDER BY p.name ASC
 	</select>
 
     <select id="findProducts" resultType="org.yami.product.dto.Product">
@@ -47,4 +47,8 @@
         WHERE product_id=#{productId}
 	</select>
 
+    <insert id="saveProduct">
+        INSERT INTO products(product_id, category_id, name, price, summary, image_url)
+        VALUES(#{productId}, #{categoryId}, #{name}, #{price}, #{summary}, #{imageUrl})
+    </insert>
 </mapper>

@@ -41,4 +41,9 @@ public class ProductDaoImpl implements ProductDao {
 		return sqlSession.selectOne("ProductMapper.findProduct",productId);
 	}
 
+	@Override
+  	@Transactional
+  	public int saveProduct(Product product) {
+    	return sqlSession.insert("ProductMapper.saveProduct", product);
+  	}
 }
