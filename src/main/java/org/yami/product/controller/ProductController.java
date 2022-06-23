@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.yami.product.service.ProductService;
+import org.yami.product.service.ProductServiceImpl;
 
 @Controller
 public class ProductController {
 
 	@Autowired 
-	private ProductService ProductService;
+	private ProductServiceImpl ProductService;
 	
 	@GetMapping
 	public String home() {
