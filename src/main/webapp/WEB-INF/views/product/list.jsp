@@ -42,7 +42,7 @@
 			  <div class="card-body">
 			    <h5 class="card-title">${tmp.name }</h5>
 			    <p class="card-text">${tmp.price }원</p>
-			    <a href="${pageContext.request.contextPath}/product/detail?productId=${tmp.productId } " class="btn btn-primary" style="">디테일부분</a>
+			    <a href="${pageContext.request.contextPath}/product/detail?productId=${tmp.productId } " class="btn btn-primary">디테일부분</a>
 			  </div>
 			</div>
 		</div>
