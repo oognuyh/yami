@@ -1,5 +1,6 @@
 package org.yami.product.service;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +18,22 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductDao productDao;
 
 	@Override
-	public List<Product> findProducts() {
-		return productDao.findProducts();
+	public  void findProducts(HttpServletRequest request) {
+		String keyword=request.getParameter("keyword");
+		
+		if(keyword==null){ 
+			keyword="";
+		}
+		
+		String encodedK=URLEncoder.encode(keyword);
+		Product product=new Product();
+		
+		if(!keyword.isBlank()){
+			product.setName(keyword);
+		}
+		
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("products", productDao.findProducts(product));
 	}
 
 	@Override

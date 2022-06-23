@@ -17,6 +17,7 @@
 	  object-fit: cover;
   	}
   	
+
   </style>
   
   <body>
@@ -24,6 +25,7 @@
 	<jsp:include page="../include/navbar.jsp">
 		<jsp:param value="index" name="thisPage"/>
 	</jsp:include>
+
 
 		<div class="container">	
 			<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">

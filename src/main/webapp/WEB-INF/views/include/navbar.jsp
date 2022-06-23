@@ -16,9 +16,9 @@
                	<ul id="categories" class="navbar-nav flex-glow-1"></ul>
                	
                	<div  class="w-50 clearfix ms-5 ">
-		         	<form action="#" method="get">
+		         	<form action="proudct/list" method="get">
 					 	<input type="text" class="form-control" id="keyword" name="keyword" value="${keyword }" placeholder="음식명을 검색해보세요!" aria-label="Recipient's username" aria-describedby="button-addon2">
-					 	<button class="btn btn-secondary" type="button" id="button-addon2">검색</button>					 	
+					 	<button class="btn btn-secondary" type="submit" id="button-addon2">검색</button>					 	
 		        	</form>      			
                	
                	</div>

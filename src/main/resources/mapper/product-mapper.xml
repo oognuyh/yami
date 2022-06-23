@@ -13,13 +13,23 @@
         <result column="updated_at" property="updatedAt" />
         <collection property="content" ofType="imageMap" select="ImageMapper.findImages" column="targetId=product_id" />
     </resultMap>
+    	<sql id="search">
+    		<choose>
+    			<when test="name !=null">
+    				WHERE p.name LIKE '%'||#{name}||'%'
+    			</when>
+    		</choose>
+    	</sql>
+    
+    
 
     <select id="findProducts" resultType="org.yami.product.dto.Product">
         SELECT p.product_id As productId, p.category_id As categoryId,p.name As name,p.price As price, 
         p.image_url As imageUrl, p.summary, p.created_at As createdAt, p.updated_at As updatedAt
-        FROM products p
+        FROM products p      
         JOIN categories c
         ON p.category_id = c.category_id
+        <include refid="search"></include> 
     </select>
     
     <select id="findProduct" parameterType="String" resultType="org.yami.product.dto.Product">

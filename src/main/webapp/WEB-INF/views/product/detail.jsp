@@ -11,7 +11,7 @@
 <style>
 	.img-card{
 		width: 500px;
-		height: 330px;
+		height: 400px;
 		object-fit: contain;
 	}
 	
@@ -24,12 +24,12 @@
 
 
       
-      
-	  <div class="row mb-2">
+ <div class="container">
+ 	  <div class="row mb-2">
 		    <div class="col-md-6">
 		      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 		        <div class="col p-4 d-flex flex-column position-static">
-		        <div class="col-auto d-none d-lg-block">
+		        <div style="align-items:center; display: flex; justify-content:center;" >
 		         <img class="img-card" src="${requestScope.product.imageUrl }"/>
 		        </div>
 		        </div>
@@ -60,6 +60,8 @@
 			       
 		     </div>
 	    </div>	
+ </div>     
+
 	
 
   </div> 

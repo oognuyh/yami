@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.yami.product.dto.Product;
 
 public interface ProductService {
-	  
-	List<Product> findProducts();
-	public void findProduct(HttpServletRequest request);
-	        
-	   	    
+	
+	public void findProducts(HttpServletRequest request);
+	public void findProduct(HttpServletRequest request);   	    
 }
