@@ -170,8 +170,8 @@
 				</dl>
 			</div>
 			<br />
-
-
+			
+			
 			<!-- 주문자 정보 -->
 			<div>
 				<h3 class="mb-3">주문자 정보</h3>
@@ -179,8 +179,7 @@
 					<tbody>
 						<tr>
 							<th scope="col">주문하시는 분</th>
-							<td scope="col"><input type="text" name="name" id="name"
-								value="${order.payment.buyerName}" class="form-control" required /></td>
+							<td scope="col"><input type="text" name="name" id="name" value="${order.payment.buyerName}" class="form-control" required></td>
 						</tr>
 						<tr>
 							<th scope="col">주소</th>
@@ -205,17 +204,17 @@
 						</tr>
 						<tr>
 							<th scope="col">휴대폰 번호</th>
-							<td scope="col"><input type="text" name="cellPhone"
-								id="cellPhone" value="${order.payment.buyerTel }" class="form-control" required /></td>
+							<td scope="col"><input type="text" name="cellPhone" id="cellPhone" value="${order.payment.buyerTel }" class="form-control" required></td>
 						</tr>
 						<tr>
 							<th scope="col">이메일</th>
-							<td scope="col"><input type="text" name="email" id="email"
-								value="${order.payment.buyerEmail}" class="form-control" required /></td>
+							<td scope="col"><input type="text" name="email" id="email" value="${order.payment.buyerEmail}" class="form-control" required></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+
+			
 
 
 
@@ -225,7 +224,6 @@
 			<div>
 				<h3 class="mb-3">배송정보</h3>
 				<form action="" method="post">
-					<input type="hidden" name=""/>
 					<div>
 						<table class="table">
 							<tbody>
@@ -358,19 +356,20 @@
 	<script>
 			// payment class
 			var IMP = window.IMP; // 생략 가능
+			const totalPrice = Number("${order.totalPrice}");
 		 	IMP.init("imp64002911"); 
 		 	function requestPay() {
 		 	      IMP.request_pay({ // param
 		 	          pg: "kakaopay",
 		 	          pay_method: "card",
-		 	          merchant_uid: "ORD20180131-0000011", // orderId
-		 	          name: "노르웨이 회전 의자", // 주문명
-		 	          amount: 64900,
-		 	          buyer_email: "gildong@gmail.com",
-		 	          buyer_name: "홍길동",
-		 	          buyer_tel: "010-4242-4242",
-		 	          buyer_addr: "서울특별시 강남구 신사동",
-		 	          buyer_postcode: "01181"
+		 	          merchant_uid: "${order.orderId}", // orderId
+		 	          name: "${order.name}", // 주문명
+		 	          amount: totalPrice >= 20000 ? totalPrice : totalPrice + 2500,
+		 	          buyer_email: "${order.payment.buyerEmail}",
+		 	          buyer_name: "${order.payment.buyerName}",
+		 	          buyer_tel: "010-1234-1234",
+		 	          buyer_addr: "${order.payment.buyerAddress1 + order.payment.buyerAddress2}",
+		 	          buyer_postcode: "${order.payment.buyerPostcode}"
 		 	      }, function (rsp) { // callback
 		 	          if (rsp.success) {
 		 	        	  console.log(rsp);
