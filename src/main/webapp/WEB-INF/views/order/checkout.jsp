@@ -194,7 +194,7 @@
 								 -->
 								 
 								<input type="text" class="form-control" id="postcode" placeholder="우편번호" value="${order.payment.buyerPostcode }">
-								<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'buyer_postcode', address1: 'address', address2: 'address2'})" id="findPostcode" value="우편번호 찾기"><br>
+								<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'receiverPostcode', address1: 'address', address2: 'address2'})" id="findPostcode" value="우편번호 찾기"><br>
 								<input type="text" class="form-control" id="address" placeholder="도로명주소" value="${order.payment.buyerAddress1}">
 								<span id="guide" style="color:#999;display:none"></span>
 								<input type="text" class="form-control" id="address2" placeholder="상세주소" value="${order.payment.buyerAddress2}">
@@ -253,7 +253,7 @@
 										 -->
 										 
 										<input type="text" class="form-control" id="receiverPostcode" placeholder="우편번호" value="${order.payment.buyerPostcode}" >
-										<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'buyer_postcode', address1: 'address', address2: 'address2'})" id="findPostcode" value="우편번호 찾기"><br>
+										<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'receiverPostcode', address1: 'receiverAddress', address2: 'receiverAddress2'})" id="findPostcode" value="우편번호 찾기"><br>
 										<input type="text" class="form-control" id="receiverAddress" placeholder="도로명주소" value="${order.payment.buyerAddress1}">
 										<span id="guide" style="color:#999;display:none"></span>
 										<input type="text" class="form-control" id="receiverAddress2" placeholder="상세주소" value="${order.payment.buyerAddress2}">
