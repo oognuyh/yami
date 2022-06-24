@@ -29,8 +29,8 @@
 
 .b-example-divider {
 	height: 3rem;
-	background-color: rgba(0, 0, 0, .1);
-	border: solid rgba(0, 0, 0, .15);
+	background-color: rgba(255, 255, 204, .1);
+	border: solid rgba(255, 255, 204, .15);
 	border-width: 1px 0;
 	box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em
 		rgba(0, 0, 0, .15);
@@ -133,7 +133,7 @@
 				class="d-flex justify-content-end">
 				<dl>
 					<dt>
-						총 <strong>${order.orderItems.size()}</strong>개의 상품 금액
+						총 <span style="color:red;"><strong>${order.orderItems.size()}</strong></span>개의 상품 금액
 					</dt>
 					<dd>
 						<strong>${order.totalPrice}</strong>원
@@ -159,10 +159,10 @@
 					<dd>
 						<c:choose>
 							<c:when test="${order.totalPrice >= 20000}">
-								<strong>${order.totalPrice}</strong>원
+								<span style="color:red;"><strong>${order.totalPrice}</strong></span>원
 							</c:when>
 							<c:otherwise>
-								<strong>${order.totalPrice + 2500}</strong>원
+								<span style="color:red;"><strong>${order.totalPrice + 2500}</strong></span>원
 							</c:otherwise>
 						</c:choose>
 
@@ -183,16 +183,6 @@
 								value="${order.payment.buyerName}" class="form-control" required /></td>
 						</tr>
 						<tr>
-							<th scope="col">휴대폰 번호</th>
-							<td scope="col"><input type="text" name="cellPhone"
-								id="cellPhone" value="${order.payment.buyerTel }" class="form-control" required /></td>
-						</tr>
-						<tr>
-							<th scope="col">이메일</th>
-							<td scope="col"><input type="text" name="email" id="email"
-								value="${order.payment.buyerEmail}" class="form-control" required /></td>
-						</tr>
-						<tr>
 							<th scope="col">주소</th>
 							<td scope="col">
 							<!-- 
@@ -203,15 +193,23 @@
 								value="${order.payment.buyerAddress2}" placeholder="상세 주소">
 								 -->
 								 
-								<input type="text" class="form-control" id="buyer_postcode" placeholder="우편번호">
+								<input type="text" class="form-control" id="postcode" placeholder="우편번호" value="${order.payment.buyerPostcode }">
 								<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'buyer_postcode', address1: 'address', address2: 'address2'})" id="findPostcode" value="우편번호 찾기"><br>
 								<input type="text" class="form-control" id="address" placeholder="도로명주소" value="${order.payment.buyerAddress1}">
 								<span id="guide" style="color:#999;display:none"></span>
 								<input type="text" class="form-control" id="address2" placeholder="상세주소" value="${order.payment.buyerAddress2}">
 
 							</td>
-							
-							
+						</tr>
+						<tr>
+							<th scope="col">휴대폰 번호</th>
+							<td scope="col"><input type="text" name="cellPhone"
+								id="cellPhone" value="${order.payment.buyerTel }" class="form-control" required /></td>
+						</tr>
+						<tr>
+							<th scope="col">이메일</th>
+							<td scope="col"><input type="text" name="email" id="email"
+								value="${order.payment.buyerEmail}" class="form-control" required /></td>
 						</tr>
 					</tbody>
 				</table>
@@ -225,73 +223,52 @@
 			<div>
 				<h3 class="mb-3">배송정보</h3>
 				<form action="" method="post">
+					<input type="hidden" name=""/>
 					<div>
 						<table class="table">
 							<tbody>
 								<tr>
 									<th scope="col">배송지 확인</th>
 									<td>
-										<ul>
-											<li><input type="checkbox" name="shipping"
-												id="shippingNew" /> <label for="shippingNew"
-												class="choice_s">직접 입력</label></li>
-
-										</ul>
+										<input type="checkbox" name="shipping"
+											id="shippingNew" /> <label for="shippingNew"
+											class="choice_s">직접 입력하기</label>
 									</td>
 								</tr>
 
-								<c:choose>
-									<c:when test="">
-										<tr>
-											<th scope="col">받으실 분</th>
-											<td><input type="text" name="receiverName"
-												id="receiverName" class="form-control" /></td>
-										</tr>
-										<tr>
-											<th scope="col">받으실 곳</th>
-											<td>
-												<input type="text" class="form-control" id="address"
-												placeholder="기본 주소" required> <input
-												type="text" class="form-control" id="address2"
-												placeholder="상세 주소">
-											</td>
-										</tr>
-										<tr>
-											<th scope="col">휴대폰번호</th>
-											<td><input type="text" id="receiverCellPhone"
-												name="receiverCellPhone" class="form-control" /></td>
-										</tr>
-										<tr>
-											<th scope="col">남기실 말씀</th>
-											<td><input type="text" id="orderMemo" name="orderMemo" class="form-control" /></td>
-										</tr>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<th scope="col">받으실 분</th>
-											<td><input type="text" name="receiverName"
-												id="receiverName" class="form-control" value="${order.payment.buyerName}" /></td>
-										</tr>
-										<tr>
-											<th scope="col">받으실 곳</th>
-											<td><input type="text" class="form-control"
-												id="receiverAddress" value="${order.payment.buyerAddress1}"
-												placeholder="기본 주소" required> <input
-												type="text" class="form-control" id="receiverAddress2"
-												value="${order.payment.buyerAddress2}" placeholder="상세 주소">
-											</td>
-										</tr>
-										<tr>
-											<th scope="col">휴대폰번호</th>
-											<td><input type="text" id="receiverCellPhone"
-												name="receiverCellPhone" class="form-control" value="${order.payment.buyerTel }" /></td>
-										</tr>
-										<tr>
-											<th scope="col">남기실 말씀</th>
-											<td><input type="text" id="orderMemo" name="orderMemo" class="form-control" /></td>
-										</tr>
-									</c:otherwise>
-								</c:choose>
+								<tr>
+									<th scope="col">받으실 분</th>
+									<td><input type="text" name="receiverName"
+										id="receiverName" class="form-control" value="${order.payment.buyerName}" /></td>
+								</tr>
+								<tr>
+									<th scope="col">받으실 곳</th>
+									<td>
+									<!-- 
+									<input type="text" class="form-control"
+										id="receiverAddress" value="${order.payment.buyerAddress1}"
+										placeholder="기본 주소" required> <input
+										type="text" class="form-control" id="receiverAddress2"
+										value="${order.payment.buyerAddress2}" placeholder="상세 주소">
+										 -->
+										 
+										<input type="text" class="form-control" id="receiverPostcode" placeholder="우편번호" value="${order.payment.buyerPostcode}" >
+										<input type="button" class="btn btn-outline-dark" onclick="showPostcodePopup({postcode: 'buyer_postcode', address1: 'address', address2: 'address2'})" id="findPostcode" value="우편번호 찾기"><br>
+										<input type="text" class="form-control" id="receiverAddress" placeholder="도로명주소" value="${order.payment.buyerAddress1}">
+										<span id="guide" style="color:#999;display:none"></span>
+										<input type="text" class="form-control" id="receiverAddress2" placeholder="상세주소" value="${order.payment.buyerAddress2}">
+									</td>
+								</tr>
+								<tr>
+									<th scope="col">휴대폰번호</th>
+									<td><input type="text" id="receiverCellPhone"
+										name="receiverCellPhone" class="form-control" value="${order.payment.buyerTel }" /></td>
+								</tr>
+								<tr>
+									<th scope="col">남기실 말씀</th>
+									<td><input type="text" id="orderMemo" name="orderMemo" class="form-control" /></td>
+								</tr>
+
 							</tbody>
 						</table>
 					</div>
@@ -333,7 +310,7 @@
 				</table>
 			</div>
 
-			`
+			
 			<hr class="my-4">
 
 			<!-- 결제 -->
@@ -341,15 +318,6 @@
 			<div>
 				<button type="button" class="w-100 btn btn-primary btn-lg" onclick="requestPay()">결제하기</button>
 			</div>
-			
-			 
-			<input type="text" id="sample4_postcode" placeholder="우편번호">
-			<input type="button" onclick="getPostcode()" value="우편번호 찾기"><br>
-			<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-			<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-			<span id="guide" style="color:#999;display:none"></span>
-			<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-			<input type="text" id="sample4_extraAddress" placeholder="참고항목">
 	</div>
 
 
@@ -358,23 +326,19 @@
 	    	document.querySelector('#shippingNew').addEventListener("change", function(e){
 	    		if(e.currentTarget.checked){
 	    			document.querySelector('#receiverName').value="";
+	    			document.querySelector('#receiverPostcode').value="";
 	    			document.querySelector('#receiverAddress').value="";
 	    			document.querySelector('#receiverAddress2').value="";
 	    			document.querySelector('#receiverCellPhone').value="";
 	    		} else {
 	    			document.querySelector('#receiverName').value=document.querySelector('#name').value;
+	    			document.querySelector('#receiverPostcode').value=document.querySelector('#postcode').value;
 	    			document.querySelector('#receiverAddress').value=document.querySelector('#address').value;
 	    			document.querySelector('#receiverAddress2').value=document.querySelector('#address2').value;
 	    			document.querySelector('#receiverCellPhone').value=document.querySelector('#cellPhone').value;
 	    		}
 	    	});	 
-			
-			// 우편번호 검색 클릭 시 기존의 주문자 정보 초기화
-			document.querySelector('#findPostcode').addEventListener('click', function(){
-				document.querySelector('#address').value="";
-				document.querySelector('#address2').value="";
-			
-			});
+
 	</script>
 	    
 	    
@@ -415,6 +379,37 @@
 		 	      // controller 주소 만들고 totalPrice 를 ,,,,,,,,
 		 	      });
 		 	    }
+		 	
+		 	
+		 	
+		 	/*
+			// payment class
+			var IMP = window.IMP; // 생략 가능
+		 	IMP.init("imp64002911"); 
+		 	function requestPay() {
+		 	      IMP.request_pay({ // param
+		 	          pg: "kakaopay",
+		 	          pay_method: "card",
+		 	          merchant_uid: "ORD20180131-0000011", // orderId
+		 	          name: "노르웨이 회전 의자", // 주문명
+		 	          amount: 64900,
+		 	          buyer_email: "gildong@gmail.com",
+		 	          buyer_name: "홍길동",
+		 	          buyer_tel: "010-4242-4242",
+		 	          buyer_addr: "서울특별시 강남구 신사동",
+		 	          buyer_postcode: "01181"
+		 	      }, function (rsp) { // callback
+		 	          if (rsp.success) {
+		 	        	  console.log(rsp);
+		 	          } else {
+		 	        	  console.log(rsp);
+		 	          }
+		 	      // 성공시 response 서버로 보냄 -> fetch
+		 	      // controller 주소 만들고 totalPrice 를 ,,,,,,,,
+		 	      });
+		 	    }
+		 	*/
+		 	
 	   	</script>
 
 
