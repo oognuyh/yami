@@ -318,6 +318,7 @@
 			<div>
 				<button type="button" class="w-100 btn btn-primary btn-lg" onclick="requestPay()">결제하기</button>
 			</div>
+		</main>
 	</div>
 
 
@@ -368,7 +369,7 @@
 		 	          buyer_email: "${order.payment.buyerEmail}",
 		 	          buyer_name: "${order.payment.buyerName}",
 		 	          buyer_tel: "010-1234-1234",
-		 	          buyer_addr: "${order.payment.buyerAddress1 + order.payment.buyerAddress2}",
+		 	          buyer_addr: "${order.payment.buyerAddress1}${order.payment.buyerAddress2}",
 		 	          buyer_postcode: "${order.payment.buyerPostcode}"
 		 	      }, function (rsp) { // callback
 		 	          if (rsp.success) {
