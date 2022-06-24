@@ -11,14 +11,17 @@
 		<result column="created_at" property="createdAt" />		
 		<result column="name" property="productName" />
 		<result column="price" property="productPrice" />
-		<result column="image_url" property="productImageUrl" />		
+		<result column="image_url" property="productImageUrl" />
+		<result column="category_name" property="productCategoryName" />
 	</resultMap>
 
     <select id="findOrderItems"  parameterType="string" resultMap="orderItemMap">
-    	SELECT oi.*, p.* 
+    	SELECT oi.*, p.*, c.name AS category_name
     	FROM orderitems oi
     	JOIN products p
     	ON oi.product_id = p.product_id
+		JOIN categories c
+		ON c.category_id = p.category_id
     	WHERE user_id = #{userId}
     </select>    
 	

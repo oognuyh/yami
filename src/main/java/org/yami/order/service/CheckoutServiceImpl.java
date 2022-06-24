@@ -22,12 +22,14 @@ public class CheckoutServiceImpl implements CheckoutService {
 		String userId = "d1ee2312-ee05-11ec-8ea0-0242ac120002";
 		String orderId = "41c60ad4-0042-406b-915e-7f2668751990";
 		List<OrderItem> orderItems = dao.getOrderItems(userId);
+		String orderName = orderItems.get(0).getProductCategoryName() + (orderItems.size() > 1 ? " 외 " + (orderItems.size() - 1) + "건" : "");
 
 		Order order = new Order();
 		
 		order.setOrderId(orderId);
 		order.setUserId(userId);
 		order.setOrderItems(orderItems);
+		order.setName(orderName);
 		order.setTotalPrice(orderItems.stream()
 				.map((orderItem) -> orderItem.getQuantity() * orderItem.getProductPrice())
 				.mapToInt(Integer::intValue)

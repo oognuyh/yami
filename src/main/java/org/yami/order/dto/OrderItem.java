@@ -33,4 +33,6 @@ public class OrderItem {
   private String productImageUrl;
   // 상품 가격
   private int productPrice;
+  // 상품 카테고리명
+  private String productCategoryName;
 }
