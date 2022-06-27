@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartMapper">
+    <resultMap id="cartItemMap" type="CartItem">
+        <result column="cart_item_id" property="cartItemId" />
+        <result column="user_id" property="userId" />
+        <result column="quantity" property="quantity" />
+        <result column="product_id" property="productId" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+        <association 
+            property="product" 
+            select="ProductMapper.findProductByProductId" 
+            column="product_id" />
+    </resultMap>
+</mapper>
