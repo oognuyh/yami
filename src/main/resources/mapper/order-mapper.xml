@@ -8,23 +8,23 @@
 		<result column="product_id" property="productId" />
 		<result column="quantity" property="quantity" />
 		<result column="updated_at" property="updatedAt" />
-		<result column="created_at" property="createdAt" />		
-		<result column="name" property="productName" />
-		<result column="price" property="productPrice" />
-		<result column="image_url" property="productImageUrl" />
-		<result column="category_name" property="productCategoryName" />
+		<result column="created_at" property="createdAt" />
+		<association 
+            property="product" 
+            select="ProductMapper.findProductByProductId" 
+            column="product_id" />
 	</resultMap>
 
 	<resultMap id="orderMap" type="Order">
 		<result column="order_id" property="orderId" />
 		<result column="user_id" property="userId" />
 		<result column="total_price" property="totalPrice" />
-		<result column="recipientEmail" property="recipientEmail" />
-		<result column="productName" property="productName" />
-		<result column="recipientTel" property="recipientTel" />
-		<result column="price" property="recipientPostcode" />
-		<result column="image_url" property="recipientAddress1" />
-		<result column="category_name" property="recipientAddress2" />
+		<result column="recipient_email" property="recipientEmail" />
+		<result column="product_name" property="productName" />
+		<result column="recipient_tel" property="recipientTel" />
+		<result column="recipient_postcode" property="recipientPostcode" />
+		<result column="recipient_address1" property="recipientAddress1" />
+		<result column="recipient_address2" property="recipientAddress2" />
 		<result column="updated_at" property="updatedAt" />
 		<result column="created_at" property="createdAt" />	
 		<association 
@@ -61,7 +61,7 @@
     </insert>
 
 	<select id="findOrdersByUserId" resultMap="orderMap">
-		SELECT 
+		SELECT *
 		FROM orders
 		WHERE user_id = #{userId}
 	</select>
