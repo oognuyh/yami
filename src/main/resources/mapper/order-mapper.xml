@@ -20,6 +20,7 @@
 		<result column="user_id" property="userId" />
 		<result column="total_price" property="totalPrice" />
 		<result column="recipient_email" property="recipientEmail" />
+		<result column="recipient_name" property="recipientName" />
 		<result column="product_name" property="productName" />
 		<result column="recipient_tel" property="recipientTel" />
 		<result column="recipient_postcode" property="recipientPostcode" />

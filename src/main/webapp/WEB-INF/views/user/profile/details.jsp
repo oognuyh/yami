@@ -129,7 +129,7 @@
                       <button
                         class="btn btn-outline-dark"
                         type="button"
-                        onclick="showPostcodePopup()"
+                        onclick="showPostcodePopup({postcode: 'postcode', address1: 'address1', address2: 'address2'})"
                       >
                         <i class="bi bi-search"></i>
                       </button>

@@ -42,7 +42,6 @@
                       ${order.orderItems.size()}
                     </span>
                   </div>
-
                   <div class="list-group-item">
                     <div class="list-group">
                       <c:forEach var="orderItem" items="${order.orderItems}">
@@ -90,8 +89,8 @@
                                     <tr>
                                       <td class="col-2 text-center">합계</td>
                                       <td class="ps-2">
-                                        ${orderItem.quantity *
-                                        orderItem.product.price} 원
+                                        <!-- prettier-ignore -->
+                                        ${orderItem.quantity * orderItem.product.price} 원
                                       </td>
                                     </tr>
                                   </table>
@@ -123,7 +122,6 @@
                           </tr>
                         </table>
                       </div>
-
                       <div class="list-group-item">배송지 정보</div>
                       <div class="list-group-item">
                         <table class="table table-sm mb-0">
@@ -134,12 +132,10 @@
                           <tr>
                             <td>주소</td>
                             <td>
-                              <c:if test="${order.recipientAddress1 ne null}">
+                              <span>
                                 ${order.recipientAddress1}
-                              </c:if>
-                              <c:if test="${order.recipientAddress2 ne null}">
-                                ${' ' + order.recipientAddress2}
-                              </c:if>
+                                ${order.recipientAddress2}
+                              </span>
                             </td>
                           </tr>
                         </table>
