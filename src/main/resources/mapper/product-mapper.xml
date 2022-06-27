@@ -17,6 +17,29 @@
         SELECT p.*, c.name AS category_name
         FROM products p
         JOIN categories c
-        ON p.category_id = c.category_id
+        ON c.category_id = p.category_id
+        <choose>
+            <when test="categoryId == ''">
+                <if test="q != ''">
+                    WHERE p.name LIKE '%'||#{q}||'%' OR c.name LIKE '%'||#{q}||'%'
+                </if>
+            </when>
+            <otherwise>
+                WHERE p.category_id = #{categoryId}
+            </otherwise>
+        </choose>
     </select>
+
+    <select id="findProductByProductId" resultMap="productMap">
+        SELECT p.*, c.name AS category_name
+        FROM products p
+        JOIN categories c
+        ON c.category_id = p.category_id
+        WHERE p.product_id = #{productId}
+    </select>
+
+    <insert id="saveProduct">
+        INSERT INTO products(product_id, category_id, name, price, summary, image_url)
+        VALUES(#{productId}, #{categoryId}, #{name}, #{price}, #{summary}, #{imageUrl})
+    </insert>
 </mapper>
