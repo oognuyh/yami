@@ -42,6 +42,7 @@
                       ${order.orderItems.size()}
                     </span>
                   </div>
+
                   <div class="list-group-item">
                     <div class="list-group">
                       <c:forEach var="orderItem" items="${order.orderItems}">
