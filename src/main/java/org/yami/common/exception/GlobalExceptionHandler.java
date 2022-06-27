@@ -1,22 +1,27 @@
 package org.yami.common.exception;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yami.common.dto.MessageUtil;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ControllerAdvice
@@ -43,6 +48,13 @@ public class GlobalExceptionHandler {
     } else {
 
     }
+  }
+
+  @ExceptionHandler({NoHandlerFoundException.class})
+  public String handleNoHandlerFoundException(NoHandlerFoundException e, Model model) {
+    model.addAttribute("exception", "해당 페이지를 찾을 수 없습니다.");
+
+    return "error/index";
   }
 
   @ExceptionHandler({NoProductsToCheckOutException.class})

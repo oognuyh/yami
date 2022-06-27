@@ -11,3 +11,12 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield;
 }
+
+.page-item.active > .page-link {
+  background-color: #212529;
+  color: #fff;
+}
+
+.page-link {
+  color: #212529;
+}
