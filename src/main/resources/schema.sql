@@ -35,11 +35,13 @@ CREATE TABLE users
   nickname   VARCHAR2(20 CHAR)  NOT NULL,
   email      VARCHAR2(200)      NOT NULL,
   password   VARCHAR2(200)      NOT NULL,
+  tel        VARCHAR2(13),
   postcode   VARCHAR2(20)      ,
   address1   VARCHAR2(200 CHAR),
   address2   VARCHAR2(200 CHAR),
   role       VARCHAR2(10)       DEFAULT 'ROLE_USER' NOT NULL,
   login_type VARCHAR2(10)       NOT NULL,
+  image_url  VARCHAR2(300),
   created_at DATE               DEFAULT SYSDATE,
   updated_at DATE               DEFAULT SYSDATE,
   CONSTRAINT PK_users PRIMARY KEY (user_id)
@@ -93,6 +95,7 @@ CREATE TABLE payments
   buyer_address1 VARCHAR2(200 CHAR),
   buyer_address2 VARCHAR2(200 CHAR),
   total_price    NUMBER            ,
+  receipt_url    VARCHAR2(300),
   created_at     DATE               DEFAULT SYSDATE,
   updated_at     DATE               DEFAULT SYSDATE,
   CONSTRAINT PK_payments PRIMARY KEY (payment_id)
@@ -115,11 +118,6 @@ ALTER TABLE products
   ADD CONSTRAINT FK_categories_TO_products
     FOREIGN KEY (category_id)
     REFERENCES categories (category_id);
-
-ALTER TABLE payments
-  ADD CONSTRAINT FK_orders_TO_payments
-    FOREIGN KEY (order_id)
-    REFERENCES orders (order_id);
 
 ALTER TABLE orders
   ADD CONSTRAINT FK_users_TO_orders

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrderMapper">	
+	<resultMap id="orderItemMap" type="OrderItem">
+		<result column="order_item_id" property="orderItemId" />
+		<result column="user_id" property="userId" />
+		<result column="order_id" property="orderId" />
+		<result column="product_id" property="productId" />
+		<result column="quantity" property="quantity" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="created_at" property="createdAt" />		
+		<result column="name" property="productName" />
+		<result column="price" property="productPrice" />
+		<result column="image_url" property="productImageUrl" />
+		<result column="category_name" property="productCategoryName" />
+	</resultMap>
+
+	<resultMap id="orderMap" type="Order">
+		<result column="order_id" property="orderId" />
+		<result column="user_id" property="userId" />
+		<result column="total_price" property="totalPrice" />
+		<result column="recipientEmail" property="recipientEmail" />
+		<result column="productName" property="productName" />
+		<result column="recipientTel" property="recipientTel" />
+		<result column="price" property="recipientPostcode" />
+		<result column="image_url" property="recipientAddress1" />
+		<result column="category_name" property="recipientAddress2" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="created_at" property="createdAt" />	
+		<association 
+            property="payment" 
+            select="PaymentMapper.findPaymentByOrderId" 
+            column="order_id" />
+		<collection 
+			property="orderItems" 
+			ofType="orderItemMap" 
+			select="OrderMapper.findOrderItemsByOrderId" 
+			column="orderId=order_id" />
+	</resultMap>
+
+	<select id="findOrderItemsByOrderId" resultMap="orderItemMap">
+		SELECT *
+		FROM orderItems
+		WHERE order_id = #{orderId}
+	</select>
+	
+	<select id="findBuyerByUserId" resultType="Payment">
+		SELECT email AS buyerEmail, tel AS buyerTel, name AS buyerName, postcode AS buyerPostcode, address1 AS buyerAddress1, address2 AS buyerAddress2
+		FROM users
+		WHERE user_id = #{userId}
+	</select>
+
+    <insert id="saveOrder" parameterType="Order">
+        INSERT INTO orders(order_id, user_id, name, total_price, recipient_email, recipient_name, recipient_tel, recipient_postcode, recipient_address1, recipient_address2)
+        VALUES(#{orderId}, #{userId}, #{name}, #{totalPrice}, #{recipientEmail}, #{recipientName}, #{recipientTel}, #{recipientPostcode}, #{recipientAddress1}, #{recipientAddress2})
+    </insert>
+
+    <insert id="saveOrderItem" parameterType="OrderItem">
+        INSERT INTO orderitems(order_item_id, user_id, order_id, product_id, quantity)
+        VALUES(#{orderItemId}, #{userId}, #{orderId}, #{productId}, #{quantity})
+    </insert>
+
+	<select id="findOrdersByUserId" resultMap="orderMap">
+		SELECT 
+		FROM orders
+		WHERE user_id = #{userId}
+	</select>
+</mapper>

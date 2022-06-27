@@ -1,11 +1,9 @@
 package org.yami.payment.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
-
-import org.apache.ibatis.type.Alias;
-
 import lombok.Data;
+import org.apache.ibatis.type.Alias;
 
 @Data
 @Alias("Payment")
@@ -32,8 +30,10 @@ public class Payment {
   private String buyerAddress2;
   // 총 가격
   private int totalPrice;
+  // 영수증 주소
+  private String receiptUrl;
   // 생성일자
-  private LocalDate createdAt;
+  private LocalDateTime createdAt;
   // 수정일자
-  private LocalDate updatedAt;
+  private LocalDateTime updatedAt;
 }

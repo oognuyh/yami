@@ -5,10 +5,10 @@ INSERT INTO categories(category_id, name, created_at, updated_at) VALUES('572c44
 INSERT INTO categories(category_id, name, created_at, updated_at) VALUES('3d721069-93d2-4529-80f3-bc9a920f359c', '콜라보 밀키트', SYSDATE, SYSDATE);
 INSERT INTO categories(category_id, name, created_at, updated_at) VALUES('6d75573b-a43c-42c5-ac77-83c7e26c02d0', '선물세트', SYSDATE, SYSDATE);
 
-INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, address2, role, login_type, created_at, updated_at) 
-VALUES('d1ee2312-ee05-11ec-8ea0-0242ac120002', 'tester01', 'tester01', 'tester01@yami.org', '$2a$10$awhFJwrWH4O3keLdqCecT.hplUuJSTlK6mGNY/86FWTh5EX3jwjou', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층', 'ROLE_USER', 'LOCAL', SYSDATE, SYSDATE);
-INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, address2, role, login_type, created_at, updated_at) 
-VALUES('5a6a5894-0c46-48a5-99ac-ce72453c518f', 'tester02', 'tester02', 'tester02@yami.org', '$2a$10$k7xbQDf4e48HPp5spbqPuetQkAQmCPPnee98aOJZGrlT0hCa6VDgy', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층', 'ROLE_USER', 'LOCAL', SYSDATE, SYSDATE);
+INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, address2, role, login_type, image_url, tel, created_at, updated_at) 
+VALUES('d1ee2312-ee05-11ec-8ea0-0242ac120002', 'tester01', 'tester01', 'tester01@yami.org', '$2a$10$awhFJwrWH4O3keLdqCecT.hplUuJSTlK6mGNY/86FWTh5EX3jwjou', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층', 'ROLE_USER', 'LOCAL', 'https://www.amongusavatarcreator.com/assets/img/characters/600/blue.png', '021231234', SYSDATE, SYSDATE);
+INSERT INTO users(user_id, name, nickname, email, password, postcode, address1, address2, role, login_type, image_url, tel, created_at, updated_at) 
+VALUES('5a6a5894-0c46-48a5-99ac-ce72453c518f', 'tester02', 'tester02', 'tester02@yami.org', '$2a$10$k7xbQDf4e48HPp5spbqPuetQkAQmCPPnee98aOJZGrlT0hCa6VDgy', '06234', '서울특별시 강남구 테헤란로 124', '삼원타워 5층', 'ROLE_USER', 'LOCAL', 'https://www.amongusavatarcreator.com/assets/img/characters/600/yellow.png', '021231234', SYSDATE, SYSDATE);
 
 INSERT INTO products(product_id, category_id, name, price, summary, image_url, created_at, updated_at) VALUES('ac36f878-ae53-41c5-975a-a244471fe71f', '26275020-ea3c-11ec-8fea-0242ac120002', '[마이셰프] 밀푀유나베(2인)',1.69E+4,'깔끔한 국물이 일품, 부드러운 소고기와 신선한 야채가 잘 어우러진 전골요리입니다. (칼국수도 드려요.)','https://www.mychef.kr/data/goods/17/03/15/1000000559/1000000559_add2_098.jpg','2022-06-21 16:50:42','2022-06-21 16:50:42');
 INSERT INTO products(product_id, category_id, name, price, summary, image_url, created_at, updated_at) VALUES('1461a0bf-f17c-4ec3-a30e-a91cbca45acd', '26275020-ea3c-11ec-8fea-0242ac120002', '[마이셰프] 감바스알아히요(2인)',1.79E+4,'통통한 새우와 올리브오일에 찍어 먹는 색다른 맛의 스페인 까수엘라 매력에 푹 빠지실 거예요','https://www.mychef.kr/data/goods/16/09/26/1000000312/1000000312_add2_040.jpg', SYSDATE, SYSDATE);
@@ -1443,3 +1443,8 @@ INSERT INTO images(IMAGE_ID,TARGET_ID,PATH,CREATED_AT,UPDATED_AT) VALUES ('4583b
 INSERT INTO images(IMAGE_ID,TARGET_ID,PATH,CREATED_AT,UPDATED_AT) VALUES ('adc0a971-4595-4eca-bd3e-13e26ba084f8','57ec5b1f-0cf0-45e5-8083-9bd627299e4c','http://mychef.godohosting.com/godo5/product_mark/tomahawk_steak_.jpg','2022-06-21 17:09:02','2022-06-21 17:09:02');
 INSERT INTO images(IMAGE_ID,TARGET_ID,PATH,CREATED_AT,UPDATED_AT) VALUES ('67fb245a-555e-456e-ad88-d170ae6b7a7d','57ec5b1f-0cf0-45e5-8083-9bd627299e4c','http://mychef.godohosting.com/godo5/product_nutrient/tomahawk_steak.jpg','2022-06-21 17:09:02','2022-06-21 17:09:02');
 INSERT INTO images(IMAGE_ID,TARGET_ID,PATH,CREATED_AT,UPDATED_AT) VALUES ('81baa3ec-84c1-438f-b0e8-14668722dfb7','57ec5b1f-0cf0-45e5-8083-9bd627299e4c','http://mychef.godohosting.com/godo5/common/cookingbox.jpg','2022-06-21 17:09:02','2022-06-21 17:09:02');
+
+INSERT INTO cartitems(cart_item_id, user_id, product_id, quantity)
+VALUES('9c265757-1bd0-427f-9182-b01d48a3ae64', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', 'ac36f878-ae53-41c5-975a-a244471fe71f', 3);
+INSERT INTO cartitems(cart_item_id, user_id, product_id, quantity)
+VALUES('0be6cad0-42a4-4fb3-869c-b4ff1eb3c99a', 'd1ee2312-ee05-11ec-8ea0-0242ac120002', 'ce688687-d49a-4af9-8cbc-de5d742e7379', 3);
