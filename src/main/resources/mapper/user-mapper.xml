@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+    <resultMap id="userMap" type="User">
+        <result column="user_id" property="userId" />
+        <result column="name" property="name" />
+        <result column="nickname" property="nickname" />
+        <result column="email" property="email" />
+        <result column="password" property="password" />
+        <result column="postcode" property="postcode" />
+        <result column="address1" property="address1" />
+        <result column="address2" property="address2" />
+        <result column="role" property="role" />
+        <result column="login_type" property="loginType" />
+        <result column="image_url" property="imageUrl" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+</mapper>

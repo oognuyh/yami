@@ -1,9 +1,9 @@
 package org.yami.common.configuration;
 
+import com.github.pagehelper.PageInterceptor;
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -15,10 +15,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.github.pagehelper.PageInterceptor;
-
-import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
@@ -43,7 +39,7 @@ public class DatabaseConfig {
     sqlSessionFactoryBean.setMapperLocations(
         new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
     sqlSessionFactoryBean.setPlugins();
-  
+
     configurationProps.setProperty("mapUnderscoreToCamelCase", "true");
     configurationProps.setProperty("jdbcTypeForNull", "NULL");
     configurationProps.setProperty("callSettersOnNulls", "false");
