@@ -145,7 +145,7 @@
                               <button
                                 type="button"
                                 class="btn btn-outline-dark"
-                                onclick="showPostcodePopup({postcode: 'receiverPostcode', address1: 'address', address2: 'address2'})"
+                                onclick="showPostcodePopup({postcode: 'buyerPostcode', address1: 'buyerAddress1', address2: 'buyerAddress2'})"
                               >
                                 <i class="bi bi-search"></i>
                               </button>
@@ -245,7 +245,7 @@
                               <button
                                 type="button"
                                 class="btn btn-outline-dark"
-                                onclick="showPostcodePopup({postcode: 'receiverPostcode', address1: 'address', address2: 'address2'})"
+                                onclick="showPostcodePopup({postcode: 'recipientPostcode', address1: 'recipientAddress1', address2: 'recipientAddress2'})"
                               >
                                 <i class="bi bi-search"></i>
                               </button>

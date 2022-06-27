@@ -138,15 +138,15 @@
                 <div class="input-group">
                   <input
                     v-model="postcode"
+                    id="postcode"
                     type="text"
                     name="postcode"
                     :class="['form-control', error.postcode && 'is-invalid']"
-                    id="postcode"
                   />
                   <button
                     class="btn btn-outline-dark"
                     type="button"
-                    onclick="showPostcodePopup()"
+                    onclick="showPostcodePopup({postcode: 'postcode', address1: 'address1', address2: 'address2'})"
                   >
                     <i class="bi bi-search"></i>
                   </button>
