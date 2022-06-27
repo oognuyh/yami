@@ -69,6 +69,7 @@
           </div>
         </div>
 
+        <<<<<<< HEAD
         <nav class="mt-auto container d-flex justify-content-center py-5">
           <ul class="pagination">
             <li class="page-item ${page.isFirstPage ? 'disabled' : ''}">
@@ -105,6 +106,7 @@
           </ul>
         </nav>
 
+        ======= >>>>>>> dbec6ecbd6501575f33e16fc6e5651857b32a2ac
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
       </div>
     </div>
