@@ -19,8 +19,15 @@
       <div class="d-flex flex-column min-vh-100">
         <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
-        <div class="container d-flex justify-content-center align-items-center">
-          <div class="alert alert-danger">${requestScope}</div>
+        <div
+          class="container d-flex justify-content-center align-items-center mt-5"
+        >
+          <div class="alert alert-danger">
+            ${requestScope.exception}
+            <a class="alert-link" href="${pageContext.request.contextPath}">
+              GO TO HOME
+            </a>
+          </div>
         </div>
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />

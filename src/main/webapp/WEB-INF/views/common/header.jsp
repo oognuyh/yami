@@ -109,7 +109,7 @@
                 </li>
 
                 <li>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/order-history">
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/order/history">
                     <i class="bi bi-clock-history me-2"></i>
                     Your Orders
                   </a>

@@ -103,7 +103,7 @@
                               <button
                                 class="btn btn-sm btn-outline-dark"
                                 type="button"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                onclick="this.parentNode.querySelector('input[type=number]').value > 1 && this.parentNode.querySelector('input[type=number]').stepDown()"
                               >
                                 <i class="bi bi-dash"></i>
                               </button>
