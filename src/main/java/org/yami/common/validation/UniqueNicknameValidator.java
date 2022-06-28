@@ -3,6 +3,8 @@ package org.yami.common.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -20,7 +22,7 @@ public class UniqueNicknameValidator implements ConstraintValidator<UniqueNickna
   public boolean isValid(String nickname, ConstraintValidatorContext context) {
     if (StringUtils.hasText(nickname)) {
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-      if (authentication.isAuthenticated()) {
+      if (authentication.getClass() != AnonymousAuthenticationToken.class) {
         User user = (User) authentication.getPrincipal();
         if (user.getNickname().equals(nickname)) {
           return true;
