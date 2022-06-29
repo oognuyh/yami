@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -136,7 +137,7 @@
   fetch('${pageContext.request.contextPath}/api/categories')
     .then((response) => response.json())
     .then((categories) => {
-      document.getElementById('categories').innerHTML = categories
+      document.getElementById('categories').innerHTML = `<li><a class="dropdown-item \${!window.location.href.includes('categoryId') && !window.location.href.includes('q') ? ' active' : ''}" href="${pageContext.request.contextPath}/product/list">전체</a></li>` + categories
         .map(({ categoryId, name }) => {
           const link = `${pageContext.request.contextPath}/product/list?categoryId=\${categoryId}`;
 

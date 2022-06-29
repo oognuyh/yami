@@ -44,7 +44,7 @@ public class UserController {
   public String profile(Model model) {
 
     model.addAttribute(
-        "user", userService.findUserByUserId(SecurityUtil.getCurrentLoggedInUser().getUserId()));
+        "user", userService.findUserByUserId(SecurityUtil.getCurrentLoggedInUserId()));
 
     return "user/profile/details";
   }
@@ -74,7 +74,11 @@ public class UserController {
   public String updateLoggedInUserDetails(
       @Validated(UpdateUserDetails.class) @RequestBody User user,
       RedirectAttributes redirectAttributes) {
+    user.setUserId(SecurityUtil.getCurrentLoggedInUserId());
+
     userService.updateUserDetails(user);
+
+    redirectAttributes.addAllAttributes(MessageUtil.success("성공적으로 변경되었습니다."));
 
     return "redirect:/profile/details";
   }
@@ -83,6 +87,8 @@ public class UserController {
   public String changeLoggedInUserPassword(
       @Validated(UpdatePassword.class) @RequestBody User user,
       RedirectAttributes redirectAttributes) {
+    user.setUserId(SecurityUtil.getCurrentLoggedInUserId());
+
     userService.changePassword(user);
 
     redirectAttributes.addAllAttributes(MessageUtil.success("성공적으로 변경되었습니다."));

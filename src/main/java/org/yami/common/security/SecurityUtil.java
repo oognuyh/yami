@@ -1,6 +1,6 @@
 package org.yami.common.security;
 
-import java.util.Objects;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.yami.common.exception.UnauthorizedException;
@@ -10,11 +10,16 @@ public class SecurityUtil {
 
   public static User getCurrentLoggedInUser() {
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (Objects.isNull(authentication)) throw new UnauthorizedException();
-    if (!(authentication.getPrincipal() instanceof User)) {
+    if (authentication.getClass() == AnonymousAuthenticationToken.class)
+      throw new UnauthorizedException();
+    if (authentication.getPrincipal().getClass() != User.class) {
       throw new UnauthorizedException();
     }
 
     return (User) authentication.getPrincipal();
+  }
+
+  public static String getCurrentLoggedInUserId() {
+    return getCurrentLoggedInUser().getUserId();
   }
 }

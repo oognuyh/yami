@@ -214,7 +214,7 @@
     </div>
 
     <script src="${pageContext.request.contextPath}/webjars/vue/2.6.12/vue.min.js"></script>
-    <script src="http://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/postcode.js"></script>
     <script src="${pageContext.request.contextPath}/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/utils.js"></script>

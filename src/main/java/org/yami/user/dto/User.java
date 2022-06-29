@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.yami.common.annotation.JsonDateFormat;
 import org.yami.common.security.SocialUser;
+import org.yami.common.validation.Password;
 import org.yami.common.validation.UniqueEmail;
 import org.yami.common.validation.UniqueNickname;
 import org.yami.common.validation.ValidationGroup.DeleteUser;
@@ -55,43 +56,42 @@ public class User implements UserDetails, OAuth2User {
   private String email;
 
   @Pattern(
-      regexp = "^0[0-9]{9,10}$",
+      regexp = "^0[0-9]{8,10}$",
       groups = {UpdateUserDetails.class, RegisterUser.class},
       message = "전화번호가 양식에 맞지 않습니다.")
   private String tel;
 
-  @NotBlank(
+  @Password(
       groups = {
         UpdatePassword.class,
         RegisterUser.class,
         UpdateUserDetails.class,
         DeleteUser.class
-      },
-      message = "비밀번호를 입력하세요.")
+      })
+  @Size(min = 8, max = 16, message = "8자 이상 20자 이하 비밀번호를 입력하세요.")
   private String password;
 
-  @NotBlank(groups = {UpdateUserDetails.class})
   private String confirmPassword;
 
   @NotBlank(groups = {UpdatePassword.class})
+  @Size(min = 8, max = 16, message = "8자 이상 20자 이하 비밀번호를 입력하세요.")
   private String newPassword;
 
-  @NotBlank(groups = {UpdatePassword.class})
   private String confirmNewPassword;
 
   @Size(
       max = 10,
-      groups = {RegisterUser.class})
+      groups = {UpdateUserDetails.class, RegisterUser.class})
   private String postcode;
 
   @Size(
       max = 200,
-      groups = {RegisterUser.class})
+      groups = {UpdateUserDetails.class, RegisterUser.class})
   private String address1;
 
   @Size(
       max = 200,
-      groups = {RegisterUser.class})
+      groups = {UpdateUserDetails.class, RegisterUser.class})
   private String address2;
 
   private String imageUrl;
@@ -116,8 +116,8 @@ public class User implements UserDetails, OAuth2User {
   @AssertTrue(
       groups = {UpdatePassword.class},
       message = "비밀번호가 일치하지 않습니다.")
-  public boolean confirmNewPassword() {
-    return this.password.equals(this.confirmNewPassword);
+  public boolean isConfirmNewPassword() {
+    return this.newPassword.equals(this.confirmNewPassword);
   }
 
   public static User from(SocialUser socialUser) {
@@ -138,6 +138,7 @@ public class User implements UserDetails, OAuth2User {
   public void updateDetails(User user) {
     this.name = Objects.isNull(user.getName()) ? this.address1 : user.getName();
     this.nickname = Objects.isNull(user.getNickname()) ? this.address1 : user.getNickname();
+    this.tel = Objects.isNull(user.getTel()) ? this.imageUrl : user.getTel();
     this.postcode = Objects.isNull(user.getPostcode()) ? this.address1 : user.getPostcode();
     this.address1 = Objects.isNull(user.getAddress1()) ? this.address1 : user.getAddress1();
     this.address2 = Objects.isNull(user.getAddress2()) ? this.address2 : user.getAddress2();
