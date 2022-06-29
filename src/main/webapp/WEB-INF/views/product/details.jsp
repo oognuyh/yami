@@ -6,22 +6,10 @@
   <head>
     <title>yami</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/webjars/bootstrap-icons/1.8.3/font/bootstrap-icons.css"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/css/default.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap-icons/1.8.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
     <style>
       .btn.btn-dark:hover {
         background-color: white;
@@ -40,25 +28,13 @@
             <div class="card border-0">
               <div class="row">
                 <div class="col-md-6">
-                  <img
-                    src="${requestScope.product.imageUrl}"
-                    class="img-fluid w-100 rounded"
-                    alt="${requestScope.product.name}"
-                  />
+                  <img src="${requestScope.product.imageUrl}" class="img-fluid w-100 rounded" alt="${requestScope.product.name}" />
                 </div>
 
                 <div class="col-md-6 d-flex flex-column">
                   <div class="card-body pt-0">
-                    <form
-                      id="form"
-                      action="${pageContext.request.contextPath}/order/checkout"
-                      method="post"
-                    >
-                      <input
-                        id="productId"
-                        type="hidden"
-                        value="${requestScope.product.productId}"
-                      />
+                    <form id="form" action="${pageContext.request.contextPath}/order/checkout" method="post">
+                      <input id="productId" type="hidden" value="${requestScope.product.productId}" />
                       <table class="table">
                         <tr>
                           <td class="col-3">상품명</td>
@@ -67,9 +43,7 @@
                         <tr>
                           <td class="col-3">카테고리</td>
                           <td>
-                            <span class="badge bg-dark">
-                              ${requestScope.product.categoryName}
-                            </span>
+                            <span class="badge bg-dark"> ${requestScope.product.categoryName} </span>
                           </td>
                         </tr>
                         <c:if test="${requestScope.product.summary ne null}">
@@ -86,20 +60,10 @@
                           <td class="col-3">수량</td>
                           <td>
                             <div class="input-group px-0">
-                              <button
-                                class="btn btn-sm btn-outline-dark"
-                                type="button"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                              >
+                              <button class="btn btn-sm btn-outline-dark" type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                 <i class="bi bi-plus"></i>
                               </button>
-                              <input
-                                type="number"
-                                class="form-control form-control-sm border-dark text-end"
-                                id="quantity"
-                                value="1"
-                                style="max-width: 50px"
-                              />
+                              <input type="number" class="form-control form-control-sm border-dark text-end" id="quantity" value="1" style="max-width: 50px" />
                               <button
                                 class="btn btn-sm btn-outline-dark"
                                 type="button"
@@ -114,19 +78,11 @@
 
                       <div class="row g-3 px-3">
                         <input type="hidden" name="quantity" value="" />
-                        <button
-                          class="btn btn-outline-dark text-uppercase"
-                          type="button"
-                          onclick="addToCart()"
-                        >
+                        <button class="btn btn-outline-dark text-uppercase" type="button" onclick="addToCart()">
                           <i class="bi bi-cart-fill me-2"></i>
                           Add to cart
                         </button>
-                        <button
-                          class="btn btn-dark text-uppercase"
-                          type="button"
-                          onclick="buyNow()"
-                        >
+                        <button class="btn btn-dark text-uppercase" type="button" onclick="buyNow()">
                           <i class="bi bi-credit-card-2-back-fill me-2"></i>
                           Buy now
                         </button>

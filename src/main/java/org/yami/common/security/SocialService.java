@@ -1,6 +1,7 @@
 package org.yami.common.security;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -14,6 +15,8 @@ import org.yami.user.dto.User;
 public class SocialService extends DefaultOAuth2UserService {
 
   private final UserDao userDao;
+
+  private final PasswordEncoder passwordEncoder;
 
   @Override
   public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -35,6 +38,8 @@ public class SocialService extends DefaultOAuth2UserService {
             })
         .orElseGet(
             () -> {
+              user.setPassword(passwordEncoder.encode(user.getPassword()));
+
               userDao.saveUser(user);
 
               return user;

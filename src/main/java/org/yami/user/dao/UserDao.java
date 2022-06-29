@@ -49,6 +49,7 @@ public interface UserDao {
       "UPDATE users SET "
           + "name = #{name}, "
           + "nickname = #{nickname}, "
+          + "tel = #{tel}, "
           + "postcode = #{postcode}, "
           + "address1 = #{address1}, "
           + "address2 = #{address2} "

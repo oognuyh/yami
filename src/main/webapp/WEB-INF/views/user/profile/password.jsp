@@ -6,23 +6,10 @@
   <head>
     <title>yami</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/webjars/bootstrap/5.1.3/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="${pageContext.request.contextPath}/webjars/bootstrap-icons/1.8.3/font/bootstrap-icons.css"
-    />
-    <style>
-      [v-cloak] {
-        display: none;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap-icons/1.8.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" />
   </head>
   <body>
     <div id="app" v-cloak>
@@ -36,68 +23,32 @@
             </div>
 
             <div class="col-lg-9 col-12 px-5">
-              <form
-                @submit.prevent="update"
-                class="needs-validation"
-                novalidate
-              >
+              <form @submit.prevent="update" class="needs-validation" novalidate>
                 <div class="row g-3 mt-2">
                   <jsp:include page="/WEB-INF/views/common/alert.jsp" />
 
                   <div class="col-12">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                      <input
-                        v-model="password"
-                        type="password"
-                        name="password"
-                        :class="['form-control', error.password && 'is-invalid']"
-                        id="password"
-                        :disabled="isSocialUser"
-                        required
-                      />
-                      <button
-                        class="btn btn-outline-dark"
-                        type="button"
-                        onclick="togglePassword(this)"
-                        data-toggle-target="password"
-                        :disabled="isSocialUser"
-                      >
+                      <input v-model="password" type="password" name="password" :class="['form-control', error.password && 'is-invalid']" id="password" :disabled="isSocialUser" required />
+                      <button class="btn btn-outline-dark" type="button" onclick="togglePassword(this)" data-toggle-target="password" :disabled="isSocialUser">
                         <i class="bi bi-eye-fill"></i>
                       </button>
                     </div>
                   </div>
 
                   <div class="col-12">
-                    <label for="newPassword" class="form-label"
-                      >New Password</label
-                    >
+                    <label for="newPassword" class="form-label">New Password</label>
                     <div class="input-group">
-                      <input
-                        v-model="newPassword"
-                        type="password"
-                        name="newPassword"
-                        :class="['form-control', error.newPassword && 'is-invalid']"
-                        id="newPassword"
-                        :disabled="isSocialUser"
-                        required
-                      />
-                      <button
-                        class="btn btn-outline-dark"
-                        type="button"
-                        :disabled="isSocialUser"
-                        onclick="togglePassword(this)"
-                        data-toggle-target="newPassword"
-                      >
+                      <input v-model="newPassword" type="password" name="newPassword" :class="['form-control', error.newPassword && 'is-invalid']" id="newPassword" :disabled="isSocialUser" required />
+                      <button class="btn btn-outline-dark" type="button" :disabled="isSocialUser" onclick="togglePassword(this)" data-toggle-target="newPassword">
                         <i class="bi bi-eye-fill"></i>
                       </button>
                     </div>
                   </div>
 
                   <div class="col-12">
-                    <label for="confirmNewPassword" class="form-label"
-                      >Confirm New Password</label
-                    >
+                    <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
                     <div class="input-group">
                       <input
                         v-model="confirmNewPassword"
@@ -108,29 +59,15 @@
                         id="confirmNewPassword"
                         required
                       />
-                      <button
-                        class="btn btn-outline-dark"
-                        type="button"
-                        onclick="togglePassword(this)"
-                        data-toggle-target="confirmNewPassword"
-                        :disabled="isSocialUser"
-                      >
+                      <button class="btn btn-outline-dark" type="button" onclick="togglePassword(this)" data-toggle-target="confirmNewPassword" :disabled="isSocialUser">
                         <i class="bi bi-eye-fill"></i>
                       </button>
                     </div>
                   </div>
 
                   <div class="col-12 d-grid gap-3">
-                    <button
-                      class="btn btn-outline-dark text-uppercase mt-2"
-                      type="submit"
-                      :disabled="isSocialUser"
-                    >
-                      <span
-                        v-if="isLoading"
-                        class="spinner-border spinner-border-sm"
-                        role="status"
-                      ></span>
+                    <button class="btn btn-outline-dark text-uppercase mt-2" type="submit" :disabled="isSocialUser">
+                      <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status"></span>
                       <span v-else>Update</span>
                     </button>
                   </div>

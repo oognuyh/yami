@@ -16,7 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
@@ -44,6 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final List<String> clients = Arrays.asList("github");
 
   private final AuthenticationSuccessHandler authenticationSuccessHandler;
+
+  private final PasswordEncoder passwordEncoder;
 
   @Bean
   public AjaxAwareLoginUrlAuthenticationEntryPoint ajaxAwareLoginUrlAuthenticationEntryPoint() {
@@ -97,12 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 userDao
                     .findUserByEmailAndLoginType(email, LoginType.LOCAL)
                     .orElseThrow(() -> new UsernameNotFoundException("이메일 및 비밀번호가 유효하지 않습니다.")))
-        .passwordEncoder(passwordEncoder());
-  }
-
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+        .passwordEncoder(passwordEncoder);
   }
 
   private ClientRegistration getRegistration(String client) {
