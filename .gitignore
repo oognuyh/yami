@@ -13,6 +13,9 @@ local.properties
 .loadpath
 .recommenders
 
+# Secret keys
+.env
+
 # External tool builders
 .externalToolBuilders/
 
